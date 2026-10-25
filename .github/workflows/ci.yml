@@ -33,8 +33,10 @@ jobs:
         run: npm test
       - name: Build Obsidian plugin
         run: npm run build
+      - name: Verify bundled entry point loads like an Obsidian plugin
+        run: npm run test:bundle
       - name: Ensure committed build artifacts are reproducible
-        run: git diff --exit-code -- main.js styles.css dist
+        run: git diff --exit-code -- main.js styles.css
       - name: Assemble clean installation bundle
         run: npm run package:plugin
       - name: Upload installable plugin bundle

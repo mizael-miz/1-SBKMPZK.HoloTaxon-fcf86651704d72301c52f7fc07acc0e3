@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- fix(build): produce a single self-contained `main.js`. Obsidian evaluates `main.js` as a string inside its own loader and cannot resolve the previous `require("./dist/main.js")` wrapper (reproduced in the simulated loader harness). The build now bundles the TypeScript sources with esbuild (`obsidian` external), the committed `dist/` modules and `tsconfig.build.json` are removed, and `npm run test:bundle` checks the entry point in that harness with the legacy wrapper as a failing control.
+
 ## 0.1.0 — schema-driven runtime foundation
 
 - Establishes B/M/W graph axes, with Layer 2 schema operators and Layer 3 metrology records.

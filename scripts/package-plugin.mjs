@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { spawnSync } from "node:child_process";
 
 const root = process.cwd();
 const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
@@ -10,11 +11,20 @@ if (manifest.id !== "holotaxon") throw new Error(`Unexpected plugin id: ${manife
 if (manifest.version !== packageJson.version) {
   throw new Error(`Version mismatch: package.json=${packageJson.version}, manifest.json=${manifest.version}`);
 }
-if (!fs.existsSync(path.join(root, "main.js"))) throw new Error("Missing generated main.js; run npm run build first.");
-if (!fs.readFileSync(path.join(root, "main.js"), "utf8").includes('require("./dist/main.js")')) {
-  throw new Error('main.js does not reference the expected "./dist/main.js" entrypoint.');
+if (!fs.existsSync(path.join(root, "main.js"))) throw new Error("Missing bundled main.js; run npm run build first.");
+const mainCode = fs.readFileSync(path.join(root, "main.js"), "utf8");
+if (mainCode.includes('require("./dist/main.js")')) {
+  throw new Error('main.js still delegates to "./dist/main.js"; it must be a single self-contained bundle.');
 }
-if (!fs.existsSync(path.join(root, "dist", "main.js"))) throw new Error("Missing dist/main.js; run npm run build first.");
+
+// Behavioral validation: the entry point must load under the Obsidian-style
+// harness before it is packaged.
+const precheck = spawnSync(
+  process.execPath,
+  [path.join(root, "scripts", "verify-bundle.mjs"), path.join(root, "main.js")],
+  { stdio: "inherit" }
+);
+if (precheck.status !== 0) throw new Error("Bundled main.js failed the Obsidian-style loader check; not packaging.");
 
 const output = path.join(root, "artifacts", "HoloTaxon");
 fs.rmSync(output, { recursive: true, force: true });
@@ -25,7 +35,6 @@ for (const file of ["main.js", "manifest.json", "styles.css"]) {
   if (!fs.existsSync(source)) throw new Error(`Missing required plugin file: ${file}`);
   fs.copyFileSync(source, path.join(output, file));
 }
-fs.cpSync(path.join(root, "dist"), path.join(output, "dist"), { recursive: true });
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -39,9 +48,17 @@ const relativeFiles = packagedFiles.map((file) => path.relative(output, file).sp
 const unexpected = relativeFiles.filter((file) => !(
   file === "main.js" ||
   file === "manifest.json" ||
-  file === "styles.css" ||
-  (file.startsWith("dist/") && file.endsWith(".js"))
+  file === "styles.css"
 ));
 if (unexpected.length) throw new Error(`Unexpected files in plugin bundle: ${unexpected.join(", ")}`);
-if (!relativeFiles.includes("dist/main.js")) throw new Error("Bundle is missing dist/main.js.");
+
+// The packaged entry point must itself pass the loader check, so the artifact
+// is validated, not just the repository copy.
+const artifactCheck = spawnSync(
+  process.execPath,
+  [path.join(root, "scripts", "verify-bundle.mjs"), path.join(output, "main.js")],
+  { stdio: "inherit" }
+);
+if (artifactCheck.status !== 0) throw new Error("Packaged main.js failed the Obsidian-style loader check.");
+
 console.log(`Packaged HoloTaxon ${manifest.version}: ${relativeFiles.length} runtime files in ${path.relative(root, output)}`);

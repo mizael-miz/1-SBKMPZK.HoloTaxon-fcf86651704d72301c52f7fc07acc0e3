@@ -18,7 +18,7 @@ npm run build
 npm run package:plugin
 ```
 
-The installable folder is written to `artifacts/HoloTaxon/`. It contains the Obsidian entrypoint, manifest, stylesheet, and all compiled `dist/*.js` modules. The root `main.js` requires `dist/main.js`, so **do not omit the `dist/` directory**. The package script validates the version and expected entrypoints and excludes source files and development dependencies.
+The installable folder is written to `artifacts/HoloTaxon/`. It contains the Obsidian entrypoint, manifest, and stylesheet. `main.js` is a single self-contained bundle produced by `npm run build`; the package script validates the version, rejects any leftover `dist/` delegation, and checks the entry point in a simulated Obsidian loader before and after packaging. Source files and development dependencies are excluded.
 
 On GitHub, the CI workflow also uploads this folder as a workflow artifact named `HoloTaxon-plugin`. Download the artifact associated with the exact commit being tested; artifacts expire according to the workflow retention period.
 
@@ -36,12 +36,9 @@ On GitHub, the CI workflow also uploads this folder as a workflow artifact named
            manifest.json
            main.js
            styles.css
-           dist/
-             main.js
-             ...
    ```
 
-   Do not leave an extra nested `HoloTaxon/HoloTaxon/` or `HoloTaxon/artifacts/HoloTaxon/` directory between the plugin folder and `manifest.json`.
+   There is no `dist/` directory in this version: `main.js` is one self-contained file.
 4. Reload Obsidian (or reload community plugins), open **Settings → Community plugins**, and enable **HoloTaxon**. Ensure restricted mode is off for this manually installed plugin.
 5. Open the command palette and search for `HoloTaxon`. Confirm that these commands are present:
    - Open HoloTaxon dashboard

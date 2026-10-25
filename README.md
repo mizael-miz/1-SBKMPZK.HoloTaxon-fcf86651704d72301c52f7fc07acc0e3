@@ -20,9 +20,12 @@ npm install
 npm run typecheck
 npm test
 npm run build
+npm run test:bundle
 ```
 
-The build creates root `main.js`, `styles.css`, and `dist/*.js`. Root `main.js` preserves the default plugin export and loads the maintained source modules compiled to CommonJS. Obsidian is the only runtime dependency; TypeScript and `tsx` are development/test dependencies.
+The build creates a single self-contained root `main.js` plus `styles.css`. Obsidian evaluates `main.js` as a string inside its own loader, so the entry point must not depend on relative module files; esbuild bundles the TypeScript sources with `obsidian` as the only external module. TypeScript, `tsx`, and `esbuild` are development/test dependencies.
+
+`npm run test:bundle` verifies the generated entry point in a simulated Obsidian loader (fresh VM context, `require` limited to the host-provided `obsidian` module) and is the regression check for the previous multi-file `dist/` layout, whose relative `require("./dist/main.js")` cannot resolve under Obsidian's string-evaluated loader.
 
 ## Scale boundary
 
