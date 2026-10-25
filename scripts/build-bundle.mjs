@@ -3,13 +3,14 @@ import { builtinModules } from "node:module";
 import path from "node:path";
 import esbuild from "esbuild";
 
+const watch = process.argv.includes("--watch");
 const production = process.argv.includes("--production");
 const nodeBuiltins = [...new Set([
   ...builtinModules,
   ...builtinModules.map(name => name.startsWith("node:") ? name : `node:${name}`)
 ])];
 
-await esbuild.build({
+const context = await esbuild.context({
   entryPoints: ["src/main.ts"],
   bundle: true,
   platform: "browser",
@@ -30,4 +31,12 @@ await esbuild.build({
 });
 
 fs.copyFileSync(path.join("src", "styles.css"), "styles.css");
-console.log(`HoloTaxon single-file bundle complete (${production ? "production" : "development"}).`);
+
+if (watch) {
+  await context.watch();
+  console.log("HoloTaxon esbuild watch mode active.");
+} else {
+  await context.rebuild();
+  await context.dispose();
+  console.log(`HoloTaxon single-file bundle complete (${production ? "production" : "development"}).`);
+}
