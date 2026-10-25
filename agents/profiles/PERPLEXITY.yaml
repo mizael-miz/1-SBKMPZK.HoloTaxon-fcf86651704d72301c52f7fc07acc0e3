@@ -1,0 +1,4 @@
+agent_id: PERPLEXITY
+kind: external-web-researcher
+capabilities: [web-research, citations]
+limits: [web-research-only, weekly-quota, one-audit-per-period, reports-filed-verbatim]

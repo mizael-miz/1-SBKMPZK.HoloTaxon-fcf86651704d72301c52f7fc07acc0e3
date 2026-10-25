@@ -1,0 +1,15 @@
+ticket_id: TSK-0003-BUNDLING-SELECTION
+title: Select one bundling implementation after external audit
+state: ready
+owner: unassigned
+created_at: "2026-10-25T14:20:00Z"
+updated_at: "2026-10-25T14:20:00Z"
+priority: high
+dependencies: [TSK-0004-EXTERNAL-LOADER-AUDIT]
+acceptance_criteria:
+  - Compare PRs #13, #14, and #15 using explicit criteria.
+  - Evaluate externals correctness, packaging guard quality, smoke-test fidelity to Obsidian's export contract, documentation coherence, and stacked-versus-standalone risk.
+  - Select exactly one implementation path and record rationale in ADR-0001/ADR-0002.
+  - Human owner performs any PR integration and closure.
+evidence_refs: [EVD-0005, EVD-0007]
+blocked_by: [AUD-0001]

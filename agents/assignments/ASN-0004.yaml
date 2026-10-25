@@ -1,0 +1,8 @@
+assignment_id: ASN-0004
+agent_id: DEEPSEEK-3
+role: integrator
+ticket_id: TSK-0003-BUNDLING-SELECTION
+status: dispatched
+objective: Audit PRs #12-#15, compare test designs, and propose a discriminating test plan.
+deliverable: reports/audits/AUD-0001-LOADER-FAILURE/DEEPSEEK-3.md
+constraints: [no-pr-mutations, no-implementation-unless-ticket-claimed]

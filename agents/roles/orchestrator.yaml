@@ -1,0 +1,2 @@
+role_id: orchestrator
+purpose: Dispatch tasks, maintain dependencies and ledgers, and coordinate within authority and evidence constraints.

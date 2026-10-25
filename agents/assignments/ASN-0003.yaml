@@ -1,0 +1,8 @@
+assignment_id: ASN-0003
+agent_id: DEEPSEEK-2
+role: adversarial-reviewer
+ticket_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+status: dispatched
+objective: Steelman H2: loader restrictions make relative dist require invalid independently of export shape.
+deliverable: reports/audits/AUD-0001-LOADER-FAILURE/DEEPSEEK-2.md
+constraints: [steelman-not-endorsement, enumerate-discriminating-tests, no-implementation]

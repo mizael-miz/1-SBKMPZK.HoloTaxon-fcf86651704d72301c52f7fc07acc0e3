@@ -1,0 +1,17 @@
+adr_id: ADR-XXXX
+title: ""
+status: proposed
+created_at: ""
+decision_maker: project-owner-human
+context: ""
+decision: ""
+alternatives: []
+consequences: []
+evidence_refs: []
+ticket_refs: []
+supersedes: []
+superseded_by: []
+human_acceptance:
+  status: pending
+  accepted_at: null
+  accepted_by: null

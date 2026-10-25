@@ -1,0 +1,10 @@
+message_id: MSG-0001-AUDIT-DISPATCH
+created_at: "2026-10-25T14:20:00Z"
+sender: VIBE
+recipients: [PERPLEXITY, DEEPSEEK-1, DEEPSEEK-2, DEEPSEEK-3, LUMO]
+message_type: dispatch
+correlation_id: AUD-0001
+task_ids: [TSK-0004-EXTERNAL-LOADER-AUDIT, TSK-0003-BUNDLING-SELECTION]
+payload_ref: reports/audits/AUD-0001-LOADER-FAILURE/prompt
+status: dispatched
+notes: Prompt is placeholder until human relays exact prompt verbatim.

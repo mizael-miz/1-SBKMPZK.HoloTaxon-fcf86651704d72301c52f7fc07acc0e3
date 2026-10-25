@@ -1,0 +1,4 @@
+agent_id: DEEPSEEK-3
+kind: chat-reasoner
+capabilities: [PR-audit, test-design, comparison]
+limits: [no-direct-repository-access, output-relayed-by-human]

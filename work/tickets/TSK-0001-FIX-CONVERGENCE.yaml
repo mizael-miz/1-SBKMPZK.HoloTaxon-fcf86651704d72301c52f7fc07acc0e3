@@ -1,0 +1,15 @@
+ticket_id: TSK-0001-FIX-CONVERGENCE
+title: Converge open entrypoint-fix PRs into one accepted sequence
+state: resolving
+owner: GPT
+created_at: "2026-10-25T14:20:00Z"
+updated_at: "2026-10-25T14:20:00Z"
+priority: critical
+dependencies: [TSK-0004-EXTERNAL-LOADER-AUDIT]
+acceptance_criteria:
+  - Chosen sequence is recorded in ADR-0001 and human-accepted.
+  - Duplicate PRs are closed only after selection, with explicit rationale.
+  - No new solution PR is opened without a claimed ticket.
+  - Governance bootstrap does not mutate PRs #12, #13, #14, or #15.
+evidence_refs: [EVD-0001, EVD-0002, EVD-0005, EVD-0007]
+notes: PR #12 is the base sequence pending human acceptance of ADR-0001; bundling selection follows AUD-0001.

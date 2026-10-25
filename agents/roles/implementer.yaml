@@ -1,0 +1,2 @@
+role_id: implementer
+purpose: Implement a claimed ticket on a branch, test changes, and submit a reviewable PR without merging.

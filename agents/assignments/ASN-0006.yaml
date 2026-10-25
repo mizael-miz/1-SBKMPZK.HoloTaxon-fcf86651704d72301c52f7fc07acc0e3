@@ -1,0 +1,7 @@
+assignment_id: ASN-0006
+agent_id: GPT
+role: implementer
+ticket_id: TSK-0001-FIX-CONVERGENCE
+status: active
+objective: Execute TSK-0001 according to ADR-0001.
+constraints: [no-new-solution-pr-beyond-selected-sequence, no-merge, no-mutation-of-prs-12-15]

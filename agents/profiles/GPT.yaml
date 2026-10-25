@@ -1,0 +1,4 @@
+agent_id: GPT
+kind: implementer
+capabilities: [repository-write-via-owner-authorized-credentials, code-and-documentation-changes, tests]
+limits: [cannot-merge, ticket-first, selected-sequence-only-after-ADR-0001]

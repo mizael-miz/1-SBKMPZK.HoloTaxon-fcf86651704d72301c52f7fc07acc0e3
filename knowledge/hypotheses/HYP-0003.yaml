@@ -1,0 +1,6 @@
+hypothesis_id: HYP-0003
+title: Plugin installation layout is incomplete or mismatched
+status: contested
+claim: The installed artifact may not contain runtime files or layout required by target Obsidian version.
+predictions: [artifact inspection or install logs show missing or misplaced files]
+pending: AUD-0001

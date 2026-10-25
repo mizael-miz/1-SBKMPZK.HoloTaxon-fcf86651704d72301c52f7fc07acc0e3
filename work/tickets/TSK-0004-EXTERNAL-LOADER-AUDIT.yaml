@@ -1,0 +1,14 @@
+ticket_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+title: Audit Obsidian loader failure hypotheses against external evidence
+state: resolving
+owner: orchestrator
+created_at: "2026-10-25T14:20:00Z"
+updated_at: "2026-10-25T14:20:00Z"
+priority: critical
+dependencies: []
+acceptance_criteria:
+  - External audit reports are filed verbatim under reports/audits/AUD-0001-LOADER-FAILURE/.
+  - Each report preserves author, source URL, retrieval timestamp, and exact text.
+  - Hypothesis records are updated only from traceable evidence and remain contested until adjudicated.
+  - Report limitations distinguish official contract, third-party report, simulation, and live reproduction.
+evidence_refs: [EVD-0001, EVD-0002, EVD-0003, EVD-0004, EVD-0005, EVD-0006, EVD-0007]

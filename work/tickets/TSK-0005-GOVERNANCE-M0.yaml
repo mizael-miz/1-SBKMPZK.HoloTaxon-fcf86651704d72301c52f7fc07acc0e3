@@ -1,0 +1,15 @@
+ticket_id: TSK-0005-GOVERNANCE-M0
+title: Bootstrap governance M0 files and seed current operating state
+state: solution_pending
+owner: GPT
+created_at: "2026-10-25T14:20:00Z"
+updated_at: "2026-10-25T14:20:00Z"
+priority: high
+dependencies: []
+acceptance_criteria:
+  - Governance files and operating records are committed on arch/governance-m0.
+  - YAML parses and every internal index target exists.
+  - No secrets are committed and changes remain within governance scope.
+  - PR body documents file map, events, U01-U08, U07 adaptation, and human-only merge.
+  - Human owner accepts architecture boundaries before M0 exits.
+evidence_refs: []

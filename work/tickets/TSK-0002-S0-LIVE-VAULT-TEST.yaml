@@ -1,0 +1,17 @@
+ticket_id: TSK-0002-S0-LIVE-VAULT-TEST
+title: Perform human-owned S0 live vault acceptance test
+state: blocked
+owner: project-owner-human
+created_at: "2026-10-25T14:20:00Z"
+updated_at: "2026-10-25T14:20:00Z"
+priority: critical
+dependencies: [TSK-0001-FIX-CONVERGENCE]
+acceptance_criteria:
+  - Install the exact packaged artifact in a disposable Obsidian vault.
+  - Record artifact version and commit, Obsidian version, OS/device, and installation method.
+  - Capture exact console output and startup errors or their absence.
+  - Verify plugin load, command registration, dashboard opening, and initialized data files.
+  - Attach evidence to issue #2.
+evidence_refs: [EVD-0006]
+blocked_by: [TSK-0001-FIX-CONVERGENCE]
+notes: Human-owned gate; CI and simulated-loader tests do not satisfy this ticket.

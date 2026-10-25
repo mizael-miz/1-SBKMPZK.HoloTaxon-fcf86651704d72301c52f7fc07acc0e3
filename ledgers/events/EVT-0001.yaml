@@ -1,0 +1,10 @@
+event_id: EVT-0001
+event_type: governance-m0-proposed
+occurred_at: "2026-10-25T14:20:00Z"
+actor: GPT
+subject: governance-m0
+state_before: absent
+state_after: proposed
+artifacts: [architecture/MASTER.yaml, architecture/OPERATIONS.md, governance/CHARTER.md, AGENTS.md, decisions/REGISTER.yaml, index/INDEX.yaml]
+correlation_id: TSK-0005-GOVERNANCE-M0
+provenance: owner directive Vibe, 2026-10-25T14:20Z

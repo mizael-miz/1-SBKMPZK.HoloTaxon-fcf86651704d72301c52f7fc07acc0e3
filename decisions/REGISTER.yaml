@@ -1,0 +1,14 @@
+register_id: ADR-REGISTER-0001
+status: proposed
+policy:
+  id_scheme: provisional-pending-ADR-ID-001
+  human_acceptance_required: true
+adrs:
+  - adr_id: ADR-0001
+    title: "Fix sequence: #12 as base; bundling selection after audit; live G0 gate before release claims"
+    status: proposed
+    file: decisions/ADR-0001.yaml
+  - adr_id: ADR-0002
+    title: "Single-file bundle target layout"
+    status: proposed
+    file: decisions/ADR-0002.yaml

@@ -1,0 +1,7 @@
+evidence_id: EVD-0007
+title: PR #13 simulated-loader claim
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/13
+observed_at: "2026-10-25"
+observation: PR #13 states its VM harness rejects the relative dist wrapper and bundle/lifecycle checks pass.
+limitations: [simulation, not the real Obsidian loader]
