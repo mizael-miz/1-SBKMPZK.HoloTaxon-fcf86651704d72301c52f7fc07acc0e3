@@ -1,0 +1,7 @@
+hypothesis_id: HYP-0001
+title: CommonJS export-shape mismatch causes plugin load failure
+status: contested
+claim: Root main.js returns a module namespace object instead of the Plugin constructor expected by the target loader.
+predictions: [loader-faithful harness distinguishes return shape, real error indicates invalid plugin export]
+counterevidence_or_limits: [Node smoke test alone does not establish Obsidian loader behavior]
+pending: AUD-0001
