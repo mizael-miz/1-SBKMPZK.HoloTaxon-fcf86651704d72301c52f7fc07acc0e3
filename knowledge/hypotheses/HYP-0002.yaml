@@ -1,9 +1,10 @@
 hypothesis_id: HYP-0002
 title: Obsidian loader rejects relative require
-status: supported
-claim: The target loader evaluates main.js without Node file-based module resolution, so require('./dist/main.js') fails.
+status: confirmed-live
+claim: The target loader evaluates main.js without Node file-based module resolution, so require('./dist/main.js') returns undefined silently in the tested Android probe.
 predictions: [real loader reports relative module resolution error; self-contained bundle passes]
-counterevidence_or_limits: [PR #13 harness simulates this constraint but is not live reproduction]
+supporting_evidence_refs: [EVD-0008, EVD-0010]
+counterevidence_or_limits: [the injected probe is diagnostic instrumentation; exact full probe transcript is not available verbatim]
 adjudication_source: AUD-0001-LOADER-FAILURE
-limitation: Supported by the audit reports; exact incident attribution still lacks a captured live error.
-pending: live runtime confirmation
+limitation: Confirmed for the tested Android loader/probe path; do not generalize to every Obsidian platform/version without reproduction.
+pending: Round-2 auditor confirmation
