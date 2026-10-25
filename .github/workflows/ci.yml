@@ -35,3 +35,12 @@ jobs:
         run: npm run build
       - name: Ensure committed build artifacts are reproducible
         run: git diff --exit-code -- main.js styles.css dist
+      - name: Assemble clean installation bundle
+        run: npm run package:plugin
+      - name: Upload installable plugin bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: HoloTaxon-plugin
+          path: artifacts/HoloTaxon/
+          if-no-files-found: error
+          retention-days: 30
