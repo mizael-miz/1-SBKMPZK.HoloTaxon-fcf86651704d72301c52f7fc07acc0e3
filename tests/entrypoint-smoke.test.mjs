@@ -65,7 +65,7 @@ test("Android loader contract: real bundle, AST whitelist, and negative/positive
   assert.throws(() => assertPluginConstructor(evaluate(stubReExport)), /plugin constructor/);
 
   // Without normalization, the namespace object is not a constructor; the F1 footer rescues it.
-  const namespaceWithoutNormalization = 'class FixturePlugin extends require("obsidian").Plugin {}\\nmodule.exports = { default: FixturePlugin };';
+  const namespaceWithoutNormalization = `class FixturePlugin extends require("obsidian").Plugin {}\nmodule.exports = { default: FixturePlugin };`;
   assert.throws(() => assertPluginConstructor(evaluate(namespaceWithoutNormalization)), /plugin constructor/);
   const namespaceWithNormalization = namespaceWithoutNormalization + '\\nmodule.exports = module.exports.default ?? module.exports;';
   assertPluginConstructor(evaluate(namespaceWithNormalization));
