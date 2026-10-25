@@ -1,0 +1,14 @@
+evidence_id: EVD-0010
+title: Android injected relative-require probe and self-contained entrypoint
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2#issuecomment-6400314962
+observed_at: "2026-10-25"
+artifact: reports/audits/AUD-0001-LOADER-FAILURE/live/ANDROID-PROBE-1.md
+observation:
+  - "Injected require('./dist/main.js') completed without throwing but returned undefined; module.exports remained undefined."
+  - "A self-contained probe main.js with sole external 'obsidian' loaded and ran on the same Android device."
+provenance: Human-relayed probe adjudication summary; exact full diagnostics transcript was not included in the retrievable relay record.
+interpretation: "Live evidence confirms the silent-undefined relative-require variant in the tested probe and establishes that the self-contained probe entrypoint ran in principle on this device."
+limitations:
+  - [probe transcript is not available verbatim; see ANDROID-PROBE-1.md]
+  - [self-contained probe success is not equivalent to disposable-vault installation of the bundled production artifact]
