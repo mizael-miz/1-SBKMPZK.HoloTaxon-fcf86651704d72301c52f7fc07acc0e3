@@ -1,0 +1,7 @@
+evidence_id: EVD-0006
+title: Issue #2 CI-evidence comments at 2026-10-25T14:04Z
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2
+observed_at: "2026-10-25T14:04:00Z"
+observation: G0 remained blocked; no live Obsidian vault test evidence was recorded in the referenced update.
+limitations: [recheck issue comments before relying on this as current state]
