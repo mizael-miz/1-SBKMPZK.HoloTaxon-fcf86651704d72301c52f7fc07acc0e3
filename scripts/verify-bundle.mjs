@@ -6,12 +6,12 @@ import vm from "node:vm";
 //
 // Obsidian evaluates a plugin's main.js as a string inside its own loader, so
 // the entry point cannot rely on Node's file-based module resolution: a
-// relative require("./dist/main.js") loads fine under plain Node but fails in
-// Obsidian with "Cannot find module './dist/main.js'". This check evaluates
-// the generated entry point in a fresh VM context whose require serves only a
-// mocked "obsidian" module and rejects every other load-time dependency,
-// mirroring that constraint. The legacy two-line dist wrapper is evaluated
-// first as a control: it must fail, proving the harness discriminates.
+// relative require("./dist/main.js") loads fine under plain Node but fails under
+// this simulated loader constraint. This check evaluates the generated entry
+// point in a fresh VM context whose require serves only a mocked "obsidian"
+// module and rejects every other load-time dependency, mirroring that
+// constraint. The legacy two-line dist wrapper is evaluated first as a
+// control: it must fail, proving the harness discriminates.
 
 const root = process.cwd();
 const entry = path.resolve(process.argv[2] ?? path.join(root, "main.js"));
@@ -51,7 +51,7 @@ function evaluateLikeObsidianLoader(source, filename) {
 }
 
 // Control: the legacy wrapper that delegated to ./dist/main.js must fail here,
-// exactly as it failed inside Obsidian.
+// as expected under the simulated loader constraint.
 try {
   evaluateLikeObsidianLoader(
     'module.exports = require("./dist/main.js");',
@@ -64,6 +64,22 @@ try {
 
 if (!fs.existsSync(entry)) fail(`entry point not found: ${entry}`);
 const code = fs.readFileSync(entry, "utf8");
+
+// Mutation control: a dist delegation executed at the top of a valid bundle
+// must also fail, proving the check rejects the regression pattern when it
+// runs during module evaluation. (A require deferred inside an uncalled
+// function is outside this harness's scope.)
+try {
+  evaluateLikeObsidianLoader(
+    `require("./dist/main.js");\n${code}`,
+    "control:injected-dist-require"
+  );
+  fail("the harness loaded a bundle with an injected dist require; it does not reproduce the loader constraint");
+} catch (error) {
+  if (!/dist\/main\.js/.test(error.message)) {
+    fail(`injected-dist-require control failed for an unexpected reason: ${error.message}`);
+  }
+}
 
 let result;
 try {

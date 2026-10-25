@@ -21,11 +21,14 @@ npm run typecheck
 npm test
 npm run build
 npm run test:bundle
+npm run test:lifecycle
 ```
 
 The build creates a single self-contained root `main.js` plus `styles.css`. Obsidian evaluates `main.js` as a string inside its own loader, so the entry point must not depend on relative module files; esbuild bundles the TypeScript sources with `obsidian` as the only external module. TypeScript, `tsx`, and `esbuild` are development/test dependencies.
 
 `npm run test:bundle` verifies the generated entry point in a simulated Obsidian loader (fresh VM context, `require` limited to the host-provided `obsidian` module) and is the regression check for the previous multi-file `dist/` layout, whose relative `require("./dist/main.js")` cannot resolve under Obsidian's string-evaluated loader.
+
+`npm run test:lifecycle` goes further: it instantiates the bundled plugin against a simulated Obsidian app (in-memory vault, workspace, plugin base class), runs the full `onload()`/`onunload()` cycle, and asserts command/view/ribbon/event registration, data-file initialization, and fail-closed startup on invalid existing graph/registry data. Both checks also run against the packaged artifact during `npm run package:plugin`.
 
 ## Scale boundary
 

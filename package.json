@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test tests/*.test.ts",
     "test:bundle": "node scripts/verify-bundle.mjs",
+    "test:lifecycle": "node scripts/verify-lifecycle.mjs",
     "protocol:validate": "node scripts/validate-stages.mjs",
     "package:plugin": "node scripts/package-plugin.mjs"
   },

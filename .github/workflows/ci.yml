@@ -35,6 +35,8 @@ jobs:
         run: npm run build
       - name: Verify bundled entry point loads like an Obsidian plugin
         run: npm run test:bundle
+      - name: Simulate full plugin lifecycle against the bundle
+        run: npm run test:lifecycle
       - name: Ensure committed build artifacts are reproducible
         run: git diff --exit-code -- main.js styles.css
       - name: Assemble clean installation bundle

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - fix(build): produce a single self-contained `main.js`. Obsidian evaluates `main.js` as a string inside its own loader and cannot resolve the previous `require("./dist/main.js")` wrapper (reproduced in the simulated loader harness). The build now bundles the TypeScript sources with esbuild (`obsidian` external), the committed `dist/` modules and `tsconfig.build.json` are removed, and `npm run test:bundle` checks the entry point in that harness with the legacy wrapper as a failing control.
+- test: add `npm run test:lifecycle`, a full plugin lifecycle simulation against the bundle: `onload()`/`onunload()` run against a simulated Obsidian app with an in-memory vault, asserting command/view/ribbon/event registration, data-file initialization, and fail-closed startup (no data reset) when existing graph/registry data is corrupt or invalid. The packaging script runs both checks against the packaged artifact.
 
 ## 0.1.0 — schema-driven runtime foundation
 

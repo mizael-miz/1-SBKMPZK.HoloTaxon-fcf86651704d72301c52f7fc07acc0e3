@@ -61,4 +61,12 @@ const artifactCheck = spawnSync(
 );
 if (artifactCheck.status !== 0) throw new Error("Packaged main.js failed the Obsidian-style loader check.");
 
+// The packaged entry point must also survive the full lifecycle simulation.
+const artifactLifecycle = spawnSync(
+  process.execPath,
+  [path.join(root, "scripts", "verify-lifecycle.mjs"), path.join(output, "main.js")],
+  { stdio: "inherit" }
+);
+if (artifactLifecycle.status !== 0) throw new Error("Packaged main.js failed the lifecycle check.");
+
 console.log(`Packaged HoloTaxon ${manifest.version}: ${relativeFiles.length} runtime files in ${path.relative(root, output)}`);
