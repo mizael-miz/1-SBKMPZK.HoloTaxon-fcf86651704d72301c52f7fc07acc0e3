@@ -1,0 +1,7 @@
+evidence_id: EVD-0005
+title: Official Obsidian sample plugin build configuration
+status: recorded
+source: https://github.com/obsidianmd/obsidian-sample-plugin/blob/master/esbuild.config.mjs
+observed_at: "2026-10-25"
+observation: Official sample uses esbuild to create a single bundled entrypoint and externalizes the Obsidian API module.
+limitations: [sample convention does not prove this specific failure cause]
