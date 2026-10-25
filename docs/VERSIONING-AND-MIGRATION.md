@@ -69,7 +69,7 @@ A future migration must be a separately versioned, reviewable operation with:
 - Every accepted code/schema change is committed to GitHub.
 - Small, semantically coherent commits are preferred over one rolling replacement.
 - A release candidate is developed on a named branch and reviewed through a pull request.
-- Plugin build artifacts are generated from source; do not hand-edit main.js or dist/*.js.
+- Plugin build artifacts are generated from source; do not hand-edit main.js or styles.css.
 - CI must run locked dependency installation, type-checking, tests, a production build, and a check that committed artifacts are reproducible.
 - Tag releases only after the corresponding commit is accepted. Preserve old tags and commit history.
 - User data in the Obsidian vault is separate from repository source and must never be overwritten by installing an update.

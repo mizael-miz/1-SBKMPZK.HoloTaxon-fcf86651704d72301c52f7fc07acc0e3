@@ -18,9 +18,11 @@ npm run build
 npm run package:plugin
 ```
 
-The installable folder is written to `artifacts/HoloTaxon/`. It contains the Obsidian entrypoint, manifest, stylesheet, and all compiled `dist/*.js` modules. The root `main.js` requires `dist/main.js`, so **do not omit the `dist/` directory**. The package script validates the version and expected entrypoints and excludes source files and development dependencies.
+The installable folder is written to `artifacts/HoloTaxon/`. It contains exactly three runtime files: `main.js`, `manifest.json`, and `styles.css`. The generated `main.js` is committed at the repository root so it can be downloaded directly from GitHub on a phone. It bundles the plugin implementation and has no relative module dependency.
 
-On GitHub, the CI workflow also uploads this folder as a workflow artifact named `HoloTaxon-plugin`. Download the artifact associated with the exact commit being tested; artifacts expire according to the workflow retention period.
+**Do not include `dist/` in the shipped plugin tree.** Do not substitute a 99-byte wrapper/stub or rely on a postbuild step to create the installable entrypoint. The checked-in root `main.js` is the installable artifact; CI rebuilds it and checks reproducibility.
+
+CI also assembles the same three-file folder as a validation artifact, but CI-artifact-only delivery is not the installation method for the Android acceptance test. Download `main.js`, `manifest.json`, and `styles.css` directly from the exact repository commit on the phone.
 
 ## Install into a disposable vault
 
@@ -33,13 +35,12 @@ On GitHub, the CI workflow also uploads this folder as a workflow artifact named
      .obsidian/
        plugins/
          holotaxon/
-           manifest.json
            main.js
+           manifest.json
            styles.css
-           dist/
-             main.js
-             ...
    ```
+
+   The `holotaxon/` folder must contain only these three files. **Do not include `dist/`.**
 
    Do not leave an extra nested `HoloTaxon/HoloTaxon/` or `HoloTaxon/artifacts/HoloTaxon/` directory between the plugin folder and `manifest.json`.
 4. Reload Obsidian (or reload community plugins), open **Settings → Community plugins**, and enable **HoloTaxon**. Ensure restricted mode is off for this manually installed plugin.

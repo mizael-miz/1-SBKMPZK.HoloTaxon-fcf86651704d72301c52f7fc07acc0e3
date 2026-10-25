@@ -5,7 +5,7 @@ HoloTaxon is a schema-driven Obsidian graph runtime for fictional biodiversity. 
 - **Layer 2 is active:** bound concepts alter the effective schema of applicable records and relationships. They can add, override, remove, require, or forbid fields; impose constraints; restrict edges; and define relation types. Conflicts fail closed rather than being resolved by arbitrary ordering.
 - **Layer 3 is metrological:** metrics, measurements, uncertainty, and evidence evaluation can inform claims, but cannot reshape Layer 1 schemas.
 
-This repository contains the plugin source, executable graph API, core registry, schema engine, JSON schemas, and a Layer 2 execution example. The next bundle should include the compiled `main.js`, `manifest.json`, `styles.css` if retained, and a separate installation guide.
+This repository contains the plugin source, executable graph API, core registry, schema engine, JSON schemas, and a Layer 2 execution example. The installable plugin uses a self-contained root `main.js` bundle, `manifest.json`, and `styles.css`, with installation guidance in `INSTALL.md`.
 
 ## Runtime data files
 
@@ -22,7 +22,7 @@ npm test
 npm run build
 ```
 
-The build creates root `main.js`, `styles.css`, and `dist/*.js`. Root `main.js` preserves the default plugin export and loads the maintained source modules compiled to CommonJS. Obsidian is the only runtime dependency; TypeScript and `tsx` are development/test dependencies.
+The build uses esbuild to bundle `src/main.ts` into a self-contained CommonJS root `main.js` and copies the stylesheet to root `styles.css`. Obsidian, Electron, CodeMirror, Lezer, and Node built-ins remain external to the bundle. `npm run typecheck` remains a separate TypeScript check; TypeScript, esbuild, and `tsx` are development/test dependencies.
 
 ## Scale boundary
 
