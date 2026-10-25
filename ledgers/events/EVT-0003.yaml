@@ -1,0 +1,16 @@
+event_id: EVT-0003
+event_type: audit-reports-filed
+occurred_at: "2026-10-25T14:52:54Z"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: reports-not-filed
+state_after: six-reports-recorded-verbatim
+artifacts:
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-1.md
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-2.md
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-3.md
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/LUMO.md
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/PERPLEXITY-COMPUTER.md
+  - reports/audits/AUD-0001-LOADER-FAILURE/reports/PERPLEXITY-TASK.md
+correlation_id: TSK-0005-GOVERNANCE-M0
+provenance: Six audit report bodies relayed by the human in the conversation and filed without intended editorial changes; completed 2026-10-25T14:52:54Z.

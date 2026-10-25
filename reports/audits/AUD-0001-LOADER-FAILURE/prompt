@@ -1,3 +1,127 @@
-PLACEHOLDER — exact orchestrator audit prompt not yet relayed by the human.
+# Independent audit request — HoloTaxon Obsidian plugin load failure
 
-Do not treat this file as the audit prompt or evidence. Replace it with the exact prompt verbatim when provided and record the replacement as a new event. External reports must be filed verbatim.
+You are an independent technical auditor with no stake in any prior diagnosis or
+fix. Everything you need is in this message. Audit the data pack, render verdicts
+on the competing hypotheses, design the cheapest discriminating test, and review
+the proposed fixes. Do not fabricate. Tag every claim: [E] evidence from the data
+pack, [K] your prior knowledge, [I] inference, [S] speculation. If you have web
+access, verify against primary sources and cite URLs. State unknowns explicitly.
+Do not propose new features; propose at most one additional automated test.
+
+## Context
+- Project: HoloTaxon v0.1.0, an Obsidian plugin (manifest id "holotaxon",
+  minAppVersion 1.5.0, isDesktopOnly false).
+- Symptom: the plugin fails to load in a real Obsidian vault. The only observed
+  failure was on an ANDROID device. Desktop load was never tested. The exact
+  developer-console error was never captured.
+- No successful live load has ever been recorded; the project's installability
+  gate (G0/S0) is formally BLOCKED.
+- Several AI agents work this repo in parallel; PR churn is high. Open PRs:
+  #12 (entrypoint export fix), #13/#14/#15 (three independent single-file
+  bundling attempts). All CI-green; none claims live acceptance.
+
+## Data pack (verbatim facts)
+1. Pre-fix build: tsc compiles TypeScript to CommonJS per-module files under
+   dist/ (no bundler). scripts/postbuild.mjs writes the root entrypoint, a
+   99-byte stub: module.exports = require("./dist/main.js");
+2. dist/main.js (compiled, 12.8 KB): "__use strict"; sets the __esModule
+   marker; named export HOLOTAXON_VIEW_TYPE; class HoloTaxonPlugin extends
+   (require("obsidian")).Plugin; ends with: exports.default = HoloTaxonPlugin;
+3. dist module graph (all targets present in the shipped bundle):
+   main.js -> obsidian, ./graph-api, ./graph-store;
+   graph-api.js -> ./default-registry, ./model, ./schema-engine;
+   graph-store.js -> obsidian, ./default-registry, ./model;
+   schema-engine.js -> ./model; default-registry.js -> (none); model.js -> (none)
+4. Packaging: package-plugin.mjs copies main.js, manifest.json, styles.css AND
+   dist/ into artifacts/HoloTaxon/. INSTALL.md mandates copying dist/ into
+   .obsidian/plugins/holotaxon/ and warns "do not omit the dist/ directory".
+5. CI (passes on all branches): npm ci -> typecheck -> tests -> build ->
+   git diff --exit-code -- main.js styles.css dist (reproducibility) ->
+   package -> upload artifact.
+6. manifest.json: valid JSON, all required fields (id holotaxon, version
+   0.1.0, minAppVersion 1.5.0, isDesktopOnly false).
+7. Fix history: issue #10 diagnosed the export shape. PR #11 and PR #12 both
+   changed the stub to module.exports = require("./dist/main.js").default;
+   and added a Node smoke test (stub the "obsidian" module, require built
+   main.js, assert the result is a function extending the stubbed Plugin
+   base). PR #11 closed as duplicate; PR #12 open, CI-green (run 40199546293:
+   smoke test 1/1 passing; 9-file bundle packaged). The project itself
+   recorded on issue #2 that this is CI evidence ONLY, not live evidence.
+8. Bundling PRs (open):
+   - PR #13 (standalone): esbuild single main.js (external: obsidian only);
+     removes dist/, postbuild, tsconfig.build; adds a "simulated Obsidian
+     loader" harness + lifecycle tests; claims the relative require "cannot
+     resolve under Obsidian's loader (reproduced in the simulated harness)".
+   - PR #14 (stacked on #12): esbuild bundle; externals obsidian, electron,
+     @codemirror/*, @lezer/*, Node builtins; stops committing the generated
+     bundle; packaging rejects relative runtime require(); smoke test updated
+     to assert Obsidian's "default-exported plugin class, not a raw
+     constructor".
+   - PR #15 (draft, stacked on #12): esbuild bundle, similar externals;
+     removes the ./dist/main.js dependency; retains smoke test, packaging
+     guard, reproducibility check.
+9. Public references gathered so far:
+   - Official obsidian-sample-plugin esbuild config: bundle: true,
+     format: "cjs", external: ["obsidian", "electron", "@codemirror/*",
+     "@lezer/*", ...node builtins] — the blessed layout is ONE self-contained
+     main.js.
+   - Stack Overflow (Obsidian plugin export): "Obsidian expects either
+     module.exports or exports.default to be your Plugin class directly."
+   - Obsidian forum error (desktop, Electron): plugin code requiring an npm
+     module fails with "Plugin failure: <id> Error: Cannot find module 'X'
+     Require stack: - electron/js2c/renderer_init at Module._resolveFilename..."
+   - Obsidian developer docs "Build a plugin": compile source into a main.js
+     in the plugin directory; the sample workflow yields a single main.js.
+   - Community "fix-require"-style plugins exist specifically to add
+     relative-path module loading inside Obsidian environments.
+
+## Competing hypotheses
+- H1 (export shape): Obsidian requires the plugin constructor directly on
+  module.exports; the stub exported the CommonJS namespace object
+  ({__esModule, default, HOLOTAXON_VIEW_TYPE}), so instantiation fails.
+- H2 (sandbox require): Obsidian evaluates main.js inside its own loader and
+  cannot resolve relative requires like ./dist/main.js (desktop Electron eval
+  context; Android JS runtime without Node resolution) — so the stub fails
+  regardless of export shape, even with dist/ present.
+- H3 (install layout): dist/ missing or misplaced at install (three-file
+  manual copy, nested folder, wrong plugin dir), so ./dist/main.js cannot
+  resolve at load time.
+- H4 (other): minAppVersion vs installed app version, restricted mode,
+  manifest problems, Android filesystem/path quirks.
+
+## Questions — answer every one
+Q1 Verdict per hypothesis: {supported | contested | refuted | unresolved},
+   confidence (0.00-1.00), strongest argument for and against.
+Q2 The applied fix module.exports = require("./dist/main.js").default:
+   necessary? sufficient? regression risks?
+Q3 Does Obsidian's loader resolve relative require() from plugin main.js on
+   desktop AND on Android? Cite primary sources if web-capable; otherwise
+   mark as inference. Also: does PR #13's simulated harness constitute
+   evidence about the real loader?
+Q4 Design the single cheapest discriminating test for H1 vs H2 vs H3 that can
+   run BEFORE any reinstall (exact steps; exact error string that would
+   confirm each hypothesis).
+Q5 Should the project adopt a single-file esbuild bundle now regardless of
+   audit outcome? Tradeoffs: install robustness, mobile, debuggability/source
+   maps, CI reproducibility check, artifact size.
+Q6 Audit the fixes for blind spots: (i) what can the Node smoke test NOT
+   catch? (ii) brittleness of packaging guards that string-match
+   'require("./dist/main.js").default' or reject relative requires;
+   (iii) three parallel bundling PRs with zero live evidence — process
+   risks; (iv) which of PR #13/#14/#15 is architecturally preferable, and why?
+Q7 Android specifically: how does its plugin runtime differ from desktop
+   (module loading, filesystem, paths)? Does any data-pack evidence tie the
+   Android failure to one hypothesis?
+
+## Required output format (use exactly these headings)
+## Verdicts
+One line per hypothesis: "H1: <status> confidence=<0.00-1.00> - <rationale>"
+## Evidence
+Bulleted; each item tagged [E]/[K]/[I]/[S]; cite URLs for web-verified claims.
+## Discriminating test
+Exact steps; expected error string per hypothesis.
+## Recommended sequence
+Ordered, bounded; mark what must happen BEFORE anything merges; no speculative
+extras.
+## Uncertainties
+Explicit unknowns that block certainty.
