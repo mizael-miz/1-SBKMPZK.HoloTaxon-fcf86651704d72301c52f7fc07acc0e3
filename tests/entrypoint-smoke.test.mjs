@@ -3,7 +3,7 @@ import { builtinModules } from "node:module";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import ts from "typescript";
+import * as ts from "typescript";
 
 const root = process.cwd();
 const source = fs.readFileSync(path.join(root, "main.js"), "utf8");
@@ -54,23 +54,21 @@ function assertPluginConstructor(value) {
   return exported;
 }
 
-test("built main.js is self-contained and passes both loader variants", () => {
+test("Android loader contract: real bundle, AST whitelist, and negative/positive controls", () => {
   assertOnlyWhitelistedImports(source);
-  assert.match(source.trimEnd(), /module\.exports = module\.exports\.default \?\? module\.exports;$/);
+  assert.match(source.trimEnd(), /module\\.exports = module\\.exports\\.default \\?\\? module\\.exports;$/);
   assertPluginConstructor(evaluate(source));
-});
 
-test("negative control: silent undefined stub re-export fails constructor assertion", () => {
-  const fixture = 'module.exports = require("./stub");';
-  assert.equal(evaluate(fixture), undefined);
-  assert.throws(() => assertPluginConstructor(evaluate(fixture)), /plugin constructor/);
-});
+  // Observed Android semantics: a relative require returns undefined silently, rather than throwing.
+  const stubReExport = 'module.exports = require("./stub");';
+  assert.equal(evaluate(stubReExport), undefined);
+  assert.throws(() => assertPluginConstructor(evaluate(stubReExport)), /plugin constructor/);
 
-test("positive control: namespace export is rescued by normalization", () => {
-  const fixture = 'class FixturePlugin extends require("obsidian").Plugin {}\nmodule.exports = { default: FixturePlugin };\nmodule.exports = module.exports.default ?? module.exports;';
-  assertPluginConstructor(evaluate(fixture));
-});
+  // Without normalization, the namespace object is not a constructor; the F1 footer rescues it.
+  const namespaceWithoutNormalization = 'class FixturePlugin extends require("obsidian").Plugin {}\\nmodule.exports = { default: FixturePlugin };';
+  assert.throws(() => assertPluginConstructor(evaluate(namespaceWithoutNormalization)), /plugin constructor/);
+  const namespaceWithNormalization = namespaceWithoutNormalization + '\\nmodule.exports = module.exports.default ?? module.exports;';
+  assertPluginConstructor(evaluate(namespaceWithNormalization));
 
-test("AST guard rejects relative and non-whitelisted imports", () => {
   assert.throws(() => assertOnlyWhitelistedImports('require("../escape"); require("not-whitelisted");'), /non-whitelisted module specifiers/);
 });
