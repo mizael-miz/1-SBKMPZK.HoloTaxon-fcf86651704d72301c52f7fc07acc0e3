@@ -1,0 +1,4 @@
+agent_id: MANUS
+kind: verifier-and-implementer-support
+capabilities: [repository-write, evidence-review, acceptance-protocol]
+limits: [weekly-quota-reserve-for-TSK-0001-and-TSK-0002, cannot-merge]
