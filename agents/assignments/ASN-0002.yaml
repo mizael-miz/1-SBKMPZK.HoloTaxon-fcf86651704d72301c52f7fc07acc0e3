@@ -1,0 +1,8 @@
+assignment_id: ASN-0002
+agent_id: DEEPSEEK-1
+role: adversarial-reviewer
+ticket_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+status: dispatched
+objective: Steelman H1: export-shape mismatch is sufficient to explain the observed failure.
+deliverable: reports/audits/AUD-0001-LOADER-FAILURE/DEEPSEEK-1.md
+constraints: [steelman-not-endorsement, enumerate-discriminating-tests, no-implementation]
