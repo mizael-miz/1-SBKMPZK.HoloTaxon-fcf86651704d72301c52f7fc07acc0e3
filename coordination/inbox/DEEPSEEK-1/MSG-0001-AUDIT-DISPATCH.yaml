@@ -1,0 +1,4 @@
+message_id: MSG-0001-AUDIT-DISPATCH
+canonical_message: coordination/bus/MSG-0001-AUDIT-DISPATCH.yaml
+recipient: DEEPSEEK-1
+status: pointer
