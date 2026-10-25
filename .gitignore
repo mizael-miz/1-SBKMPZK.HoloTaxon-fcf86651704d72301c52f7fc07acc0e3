@@ -4,3 +4,9 @@ node_modules/
 *.log
 coverage/
 artifacts/
+
+# Runtime/volatile state: never commit ephemeral execution state.
+runtime/coroutines/
+runtime/locks/
+runtime/scratch/
+runtime/checkpoints/
