@@ -13,7 +13,7 @@ entries:
   - {id: INDEX-0001, path: index/INDEX.yaml, kind: index, status: proposed}
   - {id: TSK-0001-FIX-CONVERGENCE, path: work/tickets/TSK-0001-FIX-CONVERGENCE.yaml, kind: ticket, status: resolving}
   - {id: TSK-0002-S0-LIVE-VAULT-TEST, path: work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml, kind: ticket, status: resolved}
-  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: executory}
+  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: resolved}
   - {id: TSK-0004-EXTERNAL-LOADER-AUDIT, path: work/tickets/TSK-0004-EXTERNAL-LOADER-AUDIT.yaml, kind: ticket, status: resolved}
   - {id: TSK-0005-GOVERNANCE-M0, path: work/tickets/TSK-0005-GOVERNANCE-M0.yaml, kind: ticket, status: solution_pending}
   - {id: ASN-0001, path: agents/assignments/ASN-0001.yaml, kind: assignment, status: dispatched}
@@ -84,8 +84,8 @@ entries:
   - {id: PR-12, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/12, kind: external-pull-request, status: closed-superseded}
   - {id: PR-13, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/13, kind: external-pull-request, status: closed-superseded}
   - {id: PR-14, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/14, kind: external-pull-request, status: closed-superseded}
-  - {id: PR-15, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15, kind: external-pull-request, status: open-unmerged-human-merge-pending}
-  - {id: PR-19, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19, kind: external-pull-request, status: closed}
+  - {id: PR-15, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15, kind: external-pull-request, status: merged}
+  - {id: PR-19, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19, kind: external-pull-request, status: merged}
   - {id: PR-20, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/20, kind: external-pull-request, status: open-pending-human-review}
   - {id: ISSUE-2, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2, kind: external-issue, status: closed-completed}
   - {id: INBOX-PERPLEXITY, path: coordination/inbox/PERPLEXITY/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}

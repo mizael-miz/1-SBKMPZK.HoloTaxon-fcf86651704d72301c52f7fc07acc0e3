@@ -17,7 +17,7 @@ alternatives:
 consequences:
   - PR #15 amended is the canonical implementation; PRs #12–#14 are superseded and closed
   - Android S0/G0 passed in disposable vault holotaxon-g0; desktop corroboration remains a deferred, non-blocking risk under issue #8
-  - PR #15 is still open and must be merged by the human owner; ADR acceptance does not itself merge code
+  - PR #15 was merged to main at 2026-10-25T17:58:20Z as commit 413693a653695677c481dc9a78894a2e598a4910
 evidence_refs: [EVD-0001, EVD-0002, EVD-0005, EVD-0007]
 ticket_refs: [TSK-0001-FIX-CONVERGENCE, TSK-0002-S0-LIVE-VAULT-TEST, TSK-0003-BUNDLING-SELECTION, TSK-0004-EXTERNAL-LOADER-AUDIT]
 human_acceptance:
