@@ -1,0 +1,34 @@
+{
+  "protocol_version": "0.1.0",
+  "updated_at": "2026-10-25",
+  "stages": {
+    "S0": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S1": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S2": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S3": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S4": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S5": {
+      "status": "queued",
+      "evidence": []
+    },
+    "GR": {
+      "status": "queued",
+      "evidence": []
+    }
+  }
+}
