@@ -4,8 +4,8 @@
   "private": true,
   "description": "Schema-driven graph API for the HoloTaxon Obsidian plugin.",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && node scripts/build-bundle.mjs",
-    "dev": "tsc -p tsconfig.build.json --watch",
+    "build": "tsc -p tsconfig.build.json && node scripts/build-bundle.mjs --production",
+    "dev": "node scripts/build-bundle.mjs --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test tests/*.test.ts",
     "test:entrypoint": "node --test tests/entrypoint-smoke.test.mjs",
