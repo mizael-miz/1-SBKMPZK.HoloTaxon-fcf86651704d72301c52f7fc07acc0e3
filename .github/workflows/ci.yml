@@ -1,0 +1,35 @@
+name: Validate HoloTaxon
+
+on:
+  push:
+    branches:
+      - main
+      - "feat/**"
+      - "fix/**"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Type-check
+        run: npm run typecheck
+      - name: Run schema-engine tests
+        run: npm test
+      - name: Build Obsidian plugin
+        run: npm run build
+      - name: Ensure committed build artifacts are reproducible
+        run: git diff --exit-code -- main.js styles.css dist
