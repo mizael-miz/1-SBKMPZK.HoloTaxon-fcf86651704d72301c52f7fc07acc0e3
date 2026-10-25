@@ -1,0 +1,4 @@
+agent_id: DEEPSEEK-1
+kind: chat-reasoner
+capabilities: [steelman-H1, logical-analysis]
+limits: [no-direct-repository-access, output-relayed-by-human]
