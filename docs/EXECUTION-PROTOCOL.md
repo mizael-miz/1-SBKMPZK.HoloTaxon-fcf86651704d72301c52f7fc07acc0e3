@@ -62,9 +62,10 @@ Every completed issue must include:
 
 Dates above are proposed delivery targets set on 2026-10-25. GitHub Issues do not expose a native due-date field through the available issue interface used here, so each target date is encoded in the issue title/body and this stage register. If a deadline slips, edit the issue with the new date, reason, impact on dependent stages, and approval record; do not silently slide the schedule.
 
-## Current status at protocol creation
+## Current status
 
-- G0–GR: queued; no gate is marked PASS by this protocol.
-- Existing CI: passed on the feature branch; this satisfies only the repository CI check.
-- PR #1: open and unmerged.
-- Live Obsidian installation and vault-level acceptance remain unverified.
+- G0–GR: no gate is marked PASS until its explicit acceptance evidence is attached.
+- Repository CI success proves only the checked-in automated checks. It does not prove a live Obsidian installation.
+- PR #1 (runtime baseline) is merged; PR #9 contains this execution protocol and remains the review point for protocol changes.
+- Live Obsidian installation and vault-level acceptance are not yet verified. S0 remains blocked until a real Obsidian instance is used to load the package, confirm command registration, and capture startup/error observations.
+- The package-generation step creates a downloadable CI artifact, but artifact creation alone does not satisfy G0.
