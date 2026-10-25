@@ -1,0 +1,6 @@
+evidence_id: EVD-0002
+title: Compiled dist/main.js export shape
+status: pending-verification
+source: repository main branch build output
+observation: TypeScript CommonJS default exports are typically emitted through exports.default; exact committed dist/main.js bytes must be inspected before treating this as verified.
+limitations: [expected emitted shape is not proof of loader expectations]
