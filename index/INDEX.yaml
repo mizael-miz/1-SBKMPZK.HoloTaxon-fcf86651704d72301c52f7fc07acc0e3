@@ -23,7 +23,7 @@ entries:
   - {id: ASN-0005, path: agents/assignments/ASN-0005.yaml, kind: assignment, status: dispatched}
   - {id: ASN-0006, path: agents/assignments/ASN-0006.yaml, kind: assignment, status: active}
   - {id: ASN-0007, path: agents/assignments/ASN-0007.yaml, kind: assignment, status: active}
-  - {id: HYP-0001, path: knowledge/hypotheses/HYP-0001.yaml, kind: hypothesis, status: refuted}
+  - {id: HYP-0001, path: knowledge/hypotheses/HYP-0001.yaml, kind: hypothesis, status: refuted, minority_dissent: LUMO}
   - {id: HYP-0002, path: knowledge/hypotheses/HYP-0002.yaml, kind: hypothesis, status: supported}
   - {id: HYP-0003, path: knowledge/hypotheses/HYP-0003.yaml, kind: hypothesis, status: unresolved}
   - {id: HYP-0004, path: knowledge/hypotheses/HYP-0004.yaml, kind: hypothesis, status: unresolved}
