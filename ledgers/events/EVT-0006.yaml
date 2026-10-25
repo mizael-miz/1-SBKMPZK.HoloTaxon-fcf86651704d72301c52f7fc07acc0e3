@@ -1,0 +1,12 @@
+event_id: EVT-0006
+event_type: android-relative-require-probe-recorded
+occurred_at: "2026-10-25"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: probe-result-unfiled
+state_after: probe-summary-recorded-with-transcript-gap
+artifacts:
+  - reports/audits/AUD-0001-LOADER-FAILURE/live/ANDROID-PROBE-1.md
+  - knowledge/evidence/EVD-0010.yaml
+correlation_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+provenance: Human-relayed adjudication states injected require('./dist/main.js') silently returned undefined and self-contained probe main.js loaded on Android. The relayed diagnostics slot contained a placeholder, not a full transcript; that limitation is explicitly preserved.
