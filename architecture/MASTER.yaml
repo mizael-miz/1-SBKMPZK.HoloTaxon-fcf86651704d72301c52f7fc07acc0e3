@@ -1,0 +1,139 @@
+document_id: ARCH-MASTER-0001
+schema_version: 1.0.0
+project:
+  name: HoloTaxon
+  purpose: >-
+    HoloTaxon is a schema-driven Obsidian graph runtime for fictional biodiversity.
+    It separates biological reality (B), membership/classification (M), and world
+    relations (W), with Layer 2 active concept operators and Layer 3 metrology/evidence.
+  status: architecture-baseline
+  implementation_status: m0-proposed
+  release_status: not-accepted
+  decision_policy: versioned-review-required
+epistemic_legend:
+  T: requirement established by owner directive or accepted repository contract
+  U: unresolved; do not silently assume
+  S: proposed design pending human acceptance
+authority:
+  project_owner: human
+  final_decision_maker: project-owner
+  merge_authority: project-owner-human-only
+  agents_may: [read, research, propose, branch, draft, review, challenge, test]
+  agents_may_not: [merge, bypass_approval, publish_unapproved_protected_changes, claim_acceptance_without_evidence]
+  canonical_sources:
+    architecture: architecture/MASTER.yaml
+    governance: governance/CHARTER.md
+    operations: architecture/OPERATIONS.md
+    agent_contract: AGENTS.md
+    event_ledger: ledgers/events/
+invariants:
+  - Runtime state is not canonical; repository-backed specifications and ledgers are canonical.
+  - Chat messages are not the source of truth; durable decisions and evidence must be committed.
+  - Decisions, proposals, evidence, and interpretations remain distinguishable.
+  - No silent overwrite of user graph data, registry values, or canonical records.
+  - Human owner retains final authority over acceptance, rejection, editing, prohibition, and merge.
+  - A green CI run does not establish live Obsidian acceptance.
+  - G0 remains blocked until the packaged artifact is tested in a disposable real Obsidian vault and evidence is attached to issue #2.
+  - No release claim before the human-owned G0 gate and explicit release adjudication.
+repository_model:
+  coordination_mode: repository-backed-pull
+  message_bus: coordination/bus/
+  inboxes: coordination/inbox/
+  messages_are_immutable: true
+  delivery_semantics: at-least-once
+  consumer_requirement: idempotent
+  global_ordering: not-guaranteed
+  credentials_in_messages: forbidden
+  broad_repository_reads: prohibited_by_default
+  context_budget: required
+  retrieval_order: [AGENTS.md, governance/CHARTER.md, assignment_or_ticket, referenced_payloads]
+agent_system:
+  categories:
+    - researcher
+    - formalizer
+    - implementer
+    - verifier
+    - adversarial-reviewer
+    - integrator
+    - librarian
+    - orchestrator
+  permissions:
+    researcher: [research, cite, report]
+    formalizer: [formalize, identify_gaps, propose_contracts]
+    implementer: [claim_ticket, branch, implement, test, open_pr]
+    verifier: [inspect_evidence, reproduce, verify_acceptance_criteria]
+    adversarial-reviewer: [challenge_assumptions, identify_failure_modes, review]
+    integrator: [compare_branches, propose_convergence, prepare_integration]
+    librarian: [index, curate, preserve_provenance]
+    orchestrator: [dispatch, prioritize, coordinate, maintain_ledgers]
+  shared_rules:
+    - Every implementation task requires a claimed ticket before solution PR creation.
+    - Agents do not merge PRs.
+    - External audit reports are stored verbatim; evidence records may reference but not summarize them as primary evidence.
+    - Every durable state change is recorded as an event.
+coordination_contract:
+  message_fields:
+    required: [message_id, created_at, sender, recipients, message_type, correlation_id, payload_ref, status]
+    optional: [causation_id, task_ids, priority, due_at, notes]
+  message_types: [dispatch, status, handoff, evidence, decision_request, receipt, dead_letter]
+  statuses: [queued, dispatched, acknowledged, completed, failed, superseded]
+  immutability: messages are append-only; corrections are new messages
+ticket_contract:
+  required_fields: [ticket_id, title, state, owner, created_at, updated_at, acceptance_criteria, dependencies, evidence_refs]
+  states: [unaddressed, ready, claimed, resolving, solution_pending, workflow_pending, project_pending, verification_pending, resolved, blocked, rejected, superseded]
+  resolution_rule: resolved requires verification evidence and authorized human acceptance where specified
+  lease_policy: lease-with-expiry-proposed
+  stale_requeue: required
+  context_policy: retrieve only assigned work, dependencies, and explicitly triggered records
+  resurfacing_triggers: [dependency_change, contradictory_evidence, assumption_invalidated, review_deadline, high_risk_unverified, reversal_condition]
+artifact_contracts:
+  decisions: decisions/ADR-TEMPLATE.yaml and decisions/REGISTER.yaml
+  tickets: one YAML record per file under work/tickets/
+  assignments: one YAML record per file under agents/assignments/
+  hypotheses: one YAML record per file under knowledge/hypotheses/
+  evidence: one YAML record per file under knowledge/evidence/
+  profiles: one YAML record per file under agents/profiles/
+  roles: one YAML record per file under agents/roles/
+  events: one YAML record per file under ledgers/events/
+  index: index/INDEX.yaml
+runtime:
+  canonical_data: vault data files are authoritative for graph contents
+  adapter: JSON snapshot for small/medium graphs; not a multi-million-record performance claim
+  volatile_paths:
+    - runtime/coroutines/
+    - runtime/locks/
+    - runtime/scratch/
+    - runtime/checkpoints/
+open_decisions:
+  - id: U01
+    question: Canonical identifier and ADR-ID allocation semantics
+    status: unresolved
+  - id: U02
+    question: Message acknowledgement, retry, and dead-letter policy details
+    status: unresolved
+  - id: U03
+    question: Lease duration, renewal, expiry, and stale-ticket requeue thresholds
+    status: unresolved
+  - id: U04
+    question: Context budget units and retrieval stopping rules
+    status: unresolved
+  - id: U05
+    question: Evidence authenticity, provenance, and independent reproduction requirements
+    status: unresolved
+  - id: U06
+    question: Event-ledger ordering, timestamp authority, and correction semantics
+    status: unresolved
+  - id: U07
+    question: Formal acceptance criteria for the HoloTaxon graph runtime scale boundary
+    status: unresolved
+    adaptation_note: Reworded for this repository; preserve unresolved status pending human decision.
+  - id: U08
+    question: Human acceptance, protected paths, and release authorization mechanics
+    status: unresolved
+governance_m0:
+  status: proposed
+  branch: arch/governance-m0
+  bootstrap_ticket: TSK-0005-GOVERNANCE-M0
+  acceptance: human owner accepts architecture boundaries
+  provisional_ids: true
+  note: Canonical prior MASTER.yaml/tree/contract source was not present in retrievable context; this file is a reconstructed M0 baseline derived from the current repository and owner directive, pending owner comparison against the canonical spec.
