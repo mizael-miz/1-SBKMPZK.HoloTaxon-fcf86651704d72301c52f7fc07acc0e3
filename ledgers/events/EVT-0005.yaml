@@ -1,0 +1,13 @@
+event_id: EVT-0005
+event_type: android-live-loader-capture-recorded
+occurred_at: "2026-10-25"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: live-runtime-evidence-unfiled
+state_after: android-loader-error-and-install-inventory-recorded
+artifacts:
+  - reports/audits/AUD-0001-LOADER-FAILURE/live/ANDROID-CAPTURE-1.md
+  - knowledge/evidence/EVD-0008.yaml
+  - knowledge/evidence/EVD-0009.yaml
+correlation_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+provenance: Exact OCR-relayed loader error/stack and inventory adjudication were filed from Issue #2 comment 6400314962; OCR uncertainty retained.
