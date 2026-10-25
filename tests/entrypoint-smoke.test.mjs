@@ -56,7 +56,7 @@ function assertPluginConstructor(value) {
 
 test("Android loader contract: real bundle, AST whitelist, and negative/positive controls", () => {
   assertOnlyWhitelistedImports(source);
-  assert.match(source.trimEnd(), /module\\.exports = module\\.exports\\.default \\?\\? module\\.exports;$/);
+  assert.ok(source.trimEnd().endsWith("module.exports = module.exports.default ?? module.exports;"), "bundle must end with the F1 normalization line");
   assertPluginConstructor(evaluate(source));
 
   // Observed Android semantics: a relative require returns undefined silently, rather than throwing.
