@@ -8,8 +8,10 @@ adjudication_source: AUD-0001-LOADER-FAILURE
 live_evidence_refs: [EVD-0008, EVD-0010]
 minority_dissent:
   agent: LUMO
-  position: supported
-  report: reports/audits/AUD-0001-LOADER-FAILURE/reports/LUMO.md
-  note: LUMO's dissent is preserved verbatim in the filed report.
+  initial_position: supported
+  current_position: withdrawn
+  round_1_report: reports/audits/AUD-0001-LOADER-FAILURE/reports/LUMO.md
+  withdrawal_record: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-LUMO.md
+  note: Round-1 dissent is preserved; LUMO withdrew H1 as the causal diagnosis in Round 2. The narrower export-shape question remains untested for the production esbuild bundle.
 limitation: Live evidence instead supports the silent-undefined relative-require variant; verdict applies to this observed Android failure, not every possible export-shape defect.
-pending: Round-2 auditor confirmation
+adjudication: refuted-live as the cause of the captured Android failure; this does not establish acceptance of every possible bundle export shape.

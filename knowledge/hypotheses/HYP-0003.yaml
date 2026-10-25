@@ -6,4 +6,4 @@ predictions: [artifact inspection or install logs show missing or misplaced file
 supporting_evidence_refs: [EVD-0009]
 adjudication_source: AUD-0001-LOADER-FAILURE
 limitation: Eliminated as the explanation for this captured incident because dist/ was present and root main.js was the expected 99-byte stub; does not rule out future packaging mistakes.
-pending: none for this incident
+adjudication: eliminated for the captured incident.

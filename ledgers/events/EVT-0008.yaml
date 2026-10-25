@@ -1,0 +1,19 @@
+event_id: EVT-0008
+event_type: audit-adjudication-resolved-live
+occurred_at: "2026-10-25"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: round-2-adjudication-pending
+state_after: resolved-live-h2-confirmed
+artifacts:
+  - knowledge/hypotheses/HYP-0001.yaml
+  - knowledge/hypotheses/HYP-0002.yaml
+  - knowledge/hypotheses/HYP-0003.yaml
+  - knowledge/hypotheses/HYP-0004.yaml
+  - work/tickets/TSK-0004-EXTERNAL-LOADER-AUDIT.yaml
+  - work/tickets/TSK-0003-BUNDLING-SELECTION.yaml
+  - decisions/ADR-0002.yaml
+  - index/INDEX.yaml
+correlation_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+related_tasks: [TSK-0003-BUNDLING-SELECTION]
+provenance: "Round-2 closure: H2 confirmed-live as the tested Android root cause; H1 refuted-live with LUMO's withdrawal recorded; H3 eliminated; H4 residual-low with Android Obsidian app-version capture left open. PERPLEXITY withdrew its Round-1 prediction of a relative-require throw; the observed result was silent undefined. ADR-0002 records PR-15-amended with PR #14 externals and an F1 export-normalization hedge, pending human acceptance. This adjudication does not close the human-owned disposable-vault S0/G0 gate."

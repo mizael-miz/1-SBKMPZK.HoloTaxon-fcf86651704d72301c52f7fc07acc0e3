@@ -4,20 +4,25 @@ status: proposed
 created_at: "2026-10-25T14:20:00Z"
 decision_maker: project-owner-human
 context: >-
-  Obsidian's sample plugin uses a single bundled CommonJS main.js. PRs #13-#15
-  propose bundling, but loader acceptance and selection among implementations
-  remain subject to AUD-0001 and TSK-0003.
+  Obsidian's sample plugin uses a single bundled CommonJS main.js. Round-2
+  AUD-0001 reports resolve the observed Android failure in favor of a
+  self-contained bundle. Directive B-final selects PR-15-amended for execution,
+  with PR #14's externals and an F1 export-normalization hedge; the proposal
+  remains pending human acceptance and does not satisfy the live S0/G0 gate.
 decision:
   target_layout:
     main_js: self-contained_CommonJS_bundle
-    external_modules: [obsidian]
+    external_modules: [obsidian, electron, "@codemirror/*", "@lezer/*", node_builtins]
     package_files: [main.js, manifest.json, styles.css]
-  implementation_selection: pending_AUD-0001_and_TSK-0003
+  implementation_selection: PR-15-amended
+  implementation_selection_status: proposed_pending_human_acceptance
+  external_modules_source: PR-14
+  F1_export_normalization_hedge: "If the Android loader rejects the esbuild namespace shape, normalize the CommonJS export to module.exports.default ?? module.exports and repeat the live test."
 alternatives:
   - split main.js plus dist modules
 consequences:
-  - proposed target only; does not authorize merge or establish live acceptance
-  - external module set must be checked against actual build and host contract
+  - selected implementation path remains a proposal pending human acceptance; it does not authorize merge or establish live acceptance
+  - PR #14 external module set and the F1 normalization hedge must be validated against the amended PR #15 artifact and host contract
 evidence_refs: [EVD-0005, EVD-0007]
 ticket_refs: [TSK-0003-BUNDLING-SELECTION]
 human_acceptance:

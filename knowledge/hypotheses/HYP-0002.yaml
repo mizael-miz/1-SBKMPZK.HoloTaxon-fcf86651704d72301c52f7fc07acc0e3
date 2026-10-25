@@ -6,5 +6,5 @@ predictions: [real loader reports relative module resolution error; self-contain
 supporting_evidence_refs: [EVD-0008, EVD-0010]
 counterevidence_or_limits: [the injected probe is diagnostic instrumentation; exact full probe transcript is not available verbatim]
 adjudication_source: AUD-0001-LOADER-FAILURE
-limitation: Confirmed for the tested Android loader/probe path; do not generalize to every Obsidian platform/version without reproduction.
-pending: Round-2 auditor confirmation
+limitation: Confirmed for the tested Android loader/probe path; do not generalize to every Obsidian platform/version without reproduction. The full probe diagnostics transcript was not supplied verbatim, and the production artifact still requires disposable-vault acceptance.
+adjudication: confirmed-live as the observed root cause for this Android incident; self-contained probe success is not production-artifact acceptance.
