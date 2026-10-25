@@ -1,7 +1,7 @@
 ticket_id: TSK-0003-BUNDLING-SELECTION
 title: Select one bundling implementation after external audit
-state: executory
-owner: unassigned
+state: resolved
+owner: project-owner-human
 created_at: "2026-10-25T14:20:00Z"
 updated_at: "2026-10-25"
 priority: high
@@ -10,7 +10,7 @@ acceptance_criteria:
   - Compare PRs #13, #14, and #15 using explicit criteria.
   - Evaluate externals correctness, packaging guard quality, smoke-test fidelity to Obsidian's export contract, documentation coherence, and stacked-versus-standalone risk.
   - Select exactly one implementation path and record rationale in ADR-0001/ADR-0002.
-  - Human owner performs any PR integration and closure.
+  - Human owner merges PR #15 amended to main and records the merge commit.
 evidence_refs: [EVD-0005, EVD-0007]
 blocked_by: []
-notes: "Directive B-final: implementation path selected as PR-15-amended, carrying PR #14's externals and an F1 export-normalization hedge. ADR-0002 records the proposed selection; human acceptance remains pending, and the human owner performs any PR integration and closure. This ticket is executory but does not authorize merging or live acceptance."
+notes: "Resolved: ADR-0001 and ADR-0002 accepted by project-owner-human; Android S0 passed in disposable vault holotaxon-g0; canonical PR #15 amended merged to main at 2026-10-25T17:58:20Z, merge commit 413693a653695677c481dc9a78894a2e598a4910. PRs #12, #13, and #14 are closed as superseded with AUD-0001 Round-2 rationale. Desktop corroboration remains deferred and non-blocking under issue #8."

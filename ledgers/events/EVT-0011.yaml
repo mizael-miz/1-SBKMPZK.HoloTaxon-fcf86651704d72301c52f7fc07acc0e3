@@ -1,0 +1,17 @@
+event_id: EVT-0011
+event_type: pr15-canonical-bundle-merged
+occurred_at: "2026-10-25T17:58:20Z"
+actor: project-owner-human
+subject: TSK-0003-BUNDLING-SELECTION
+state_before: canonical-pr-selected-merge-pending
+state_after: resolved-pr15-merged-to-main
+artifacts:
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/commit/413693a653695677c481dc9a78894a2e598a4910
+  - decisions/ADR-0001.yaml
+  - decisions/ADR-0002.yaml
+  - work/tickets/TSK-0003-BUNDLING-SELECTION.yaml
+  - CHANGELOG.md
+correlation_id: AUD-0001-LOADER-FAILURE
+related_tasks: [TSK-0002-S0-LIVE-VAULT-TEST, TSK-0003-BUNDLING-SELECTION]
+provenance: "GitHub confirms PR #15 merged to main at 2026-10-25T17:58:20Z, merge commit 413693a653695677c481dc9a78894a2e598a4910. PRs #12, #13, and #14 are closed unmerged as superseded. EVT-0007 and EVT-0008 were already occupied by immutable earlier events; EVT-0010 records S0 PASS and EVT-0011 records canonical PR merge."

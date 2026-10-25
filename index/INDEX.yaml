@@ -8,12 +8,12 @@ entries:
   - {id: AGENT-CONTRACT-0001, path: AGENTS.md, kind: agent-contract, status: proposed}
   - {id: ADR-TEMPLATE, path: decisions/ADR-TEMPLATE.yaml, kind: decision-template, status: proposed}
   - {id: ADR-REGISTER-0001, path: decisions/REGISTER.yaml, kind: decision-register, status: proposed}
-  - {id: ADR-0001, path: decisions/ADR-0001.yaml, kind: decision, status: proposed}
-  - {id: ADR-0002, path: decisions/ADR-0002.yaml, kind: decision, status: proposed}
+  - {id: ADR-0001, path: decisions/ADR-0001.yaml, kind: decision, status: accepted}
+  - {id: ADR-0002, path: decisions/ADR-0002.yaml, kind: decision, status: accepted}
   - {id: INDEX-0001, path: index/INDEX.yaml, kind: index, status: proposed}
   - {id: TSK-0001-FIX-CONVERGENCE, path: work/tickets/TSK-0001-FIX-CONVERGENCE.yaml, kind: ticket, status: resolving}
-  - {id: TSK-0002-S0-LIVE-VAULT-TEST, path: work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml, kind: ticket, status: evidence-phase-complete}
-  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: executory}
+  - {id: TSK-0002-S0-LIVE-VAULT-TEST, path: work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml, kind: ticket, status: resolved}
+  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: resolved}
   - {id: TSK-0004-EXTERNAL-LOADER-AUDIT, path: work/tickets/TSK-0004-EXTERNAL-LOADER-AUDIT.yaml, kind: ticket, status: resolved}
   - {id: TSK-0005-GOVERNANCE-M0, path: work/tickets/TSK-0005-GOVERNANCE-M0.yaml, kind: ticket, status: solution_pending}
   - {id: ASN-0001, path: agents/assignments/ASN-0001.yaml, kind: assignment, status: dispatched}
@@ -66,6 +66,9 @@ entries:
   - {id: EVT-0007, path: ledgers/events/EVT-0007.yaml, kind: event, status: recorded}
   - {id: EVT-0008, path: ledgers/events/EVT-0008.yaml, kind: event, status: recorded}
   - {id: EVT-0009, path: ledgers/events/EVT-0009.yaml, kind: event, status: recorded}
+  - {id: EVT-0010, path: ledgers/events/EVT-0010.yaml, kind: event, status: recorded}
+  - {id: EVT-0011, path: ledgers/events/EVT-0011.yaml, kind: event, status: recorded}
+  - {id: RISK-0001-DESKTOP-CORROBORATION, path: knowledge/risks/RISK-0001-DESKTOP-CORROBORATION.yaml, kind: risk, status: deferred-open-nonblocking}
   - {id: AUD-0001-PROMPT, path: reports/audits/AUD-0001-LOADER-FAILURE/prompt, kind: audit-prompt, status: recorded}
   - {id: AUD-0001-REPORT-DEEPSEEK-1, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-1.md, kind: audit-report, status: recorded}
   - {id: AUD-0001-REPORT-DEEPSEEK-2, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-2.md, kind: audit-report, status: recorded}
@@ -78,12 +81,13 @@ entries:
   - {id: AUD-0001-ROUND-2-DEEPSEEK-3, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-DEEPSEEK-3.md, kind: audit-report, status: recorded-verbatim}
   - {id: AUD-0001-ROUND-2-LUMO, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-LUMO.md, kind: audit-report, status: recorded-verbatim}
   - {id: AUD-0001-ROUND-2-PERPLEXITY, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-PERPLEXITY.md, kind: audit-report, status: recorded-verbatim}
-  - {id: PR-12, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/12, kind: external-pull-request, status: open}
-  - {id: PR-13, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/13, kind: external-pull-request, status: open}
-  - {id: PR-14, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/14, kind: external-pull-request, status: open}
-  - {id: PR-15, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15, kind: external-pull-request, status: open-draft}
-  - {id: PR-19, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19, kind: external-pull-request, status: open}
-  - {id: ISSUE-2, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2, kind: external-issue, status: open}
+  - {id: PR-12, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/12, kind: external-pull-request, status: closed-superseded}
+  - {id: PR-13, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/13, kind: external-pull-request, status: closed-superseded}
+  - {id: PR-14, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/14, kind: external-pull-request, status: closed-superseded}
+  - {id: PR-15, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15, kind: external-pull-request, status: merged}
+  - {id: PR-19, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19, kind: external-pull-request, status: merged}
+  - {id: PR-20, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/20, kind: external-pull-request, status: open-pending-human-review}
+  - {id: ISSUE-2, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2, kind: external-issue, status: closed-completed}
   - {id: INBOX-PERPLEXITY, path: coordination/inbox/PERPLEXITY/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}
   - {id: INBOX-DEEPSEEK-1, path: coordination/inbox/DEEPSEEK-1/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}
   - {id: INBOX-DEEPSEEK-2, path: coordination/inbox/DEEPSEEK-2/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}

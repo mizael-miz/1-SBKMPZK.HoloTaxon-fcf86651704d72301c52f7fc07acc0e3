@@ -1,0 +1,13 @@
+event_id: EVT-0010
+event_type: s0-android-disposable-vault-acceptance-pass
+occurred_at: "2026-10-25T17:56:59Z"
+actor: project-owner-human
+subject: TSK-0002-S0-LIVE-VAULT-TEST
+state_before: evidence-phase-complete
+state_after: resolved-s0-pass-android
+artifacts:
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2#issuecomment-6401105745
+  - work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml
+  - knowledge/risks/RISK-0001-DESKTOP-CORROBORATION.yaml
+correlation_id: TSK-0002-S0-LIVE-VAULT-TEST
+provenance: "Human-recorded S0 acceptance PASS in disposable Android vault holotaxon-g0. Root main.js from PR #15 head e480674 loaded without an error notice; commands registered; dashboard opened; input accepted; graph.json and registry.json created; plugin remained loaded after force-stop/reopen. Obsidian version was not recorded. Desktop remains deferred and non-blocking under issue #8."

@@ -1,6 +1,6 @@
 ticket_id: TSK-0002-S0-LIVE-VAULT-TEST
 title: Perform human-owned S0 live vault acceptance test
-state: evidence-phase-complete
+state: resolved
 owner: project-owner-human
 created_at: "2026-10-25T14:20:00Z"
 updated_at: "2026-10-25"
@@ -13,5 +13,5 @@ acceptance_criteria:
   - Verify plugin load, command registration, dashboard opening, and initialized data files.
   - Attach evidence to issue #2.
 evidence_refs: [EVD-0006, EVD-0008, EVD-0009, EVD-0010]
-blocked_by: [TSK-0001-FIX-CONVERGENCE]
-notes: Evidence phase is complete for the existing Android install and diagnostic probe. Remaining acceptance gate is human-owned disposable-vault installation of the bundled production artifact; this ticket is not release acceptance.
+blocked_by: []
+notes: "S0/G0 PASS on Android in disposable vault holotaxon-g0, recorded in issue #2 comment 6401105745. Artifact root main.js from PR #15 head e480674; plugin loaded, commands registered, dashboard opened, input accepted, graph/registry data files created, and plugin survived force-stop/reopen. Obsidian version was not recorded. Desktop corroboration is deferred as a non-blocking open risk under issue #8."

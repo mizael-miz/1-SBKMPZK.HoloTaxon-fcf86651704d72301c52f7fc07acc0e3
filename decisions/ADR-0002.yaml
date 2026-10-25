@@ -1,6 +1,6 @@
 adr_id: ADR-0002
 title: "Single-file bundle target layout"
-status: proposed
+status: accepted
 created_at: "2026-10-25T14:20:00Z"
 decision_maker: project-owner-human
 context: >-
@@ -15,17 +15,18 @@ decision:
     external_modules: [obsidian, electron, "@codemirror/*", "@lezer/*", node_builtins]
     package_files: [main.js, manifest.json, styles.css]
   implementation_selection: PR-15-amended
-  implementation_selection_status: proposed_pending_human_acceptance
+  implementation_selection_status: accepted_and_merged
   external_modules_source: PR-14
-  F1_export_normalization_hedge: "If the Android loader rejects the esbuild namespace shape, normalize the CommonJS export to module.exports.default ?? module.exports and repeat the live test."
+  F1_export_normalization_hedge: "The generated main.js ends with module.exports = module.exports.default ?? module.exports; this hedge is included in the artifact tested in disposable Android vault holotaxon-g0."
 alternatives:
   - split main.js plus dist modules
 consequences:
-  - selected implementation path remains a proposal pending human acceptance; it does not authorize merge or establish live acceptance
-  - PR #14 external module set and the F1 normalization hedge must be validated against the amended PR #15 artifact and host contract
+  - the selected implementation is accepted by the project owner and has passed Android S0 in a disposable vault
+  - PR #15 was merged to main at 2026-10-25T17:58:20Z (merge commit 413693a653695677c481dc9a78894a2e598a4910); main now contains the self-contained bundle and dual-loader normalization
+  - desktop corroboration remains deferred and non-blocking under release-gate issue #8
 evidence_refs: [EVD-0005, EVD-0007]
 ticket_refs: [TSK-0003-BUNDLING-SELECTION]
 human_acceptance:
-  status: pending
-  accepted_at: null
-  accepted_by: null
+  status: accepted
+  accepted_at: "2026-10-25T17:56:59Z"
+  accepted_by: project-owner-human
