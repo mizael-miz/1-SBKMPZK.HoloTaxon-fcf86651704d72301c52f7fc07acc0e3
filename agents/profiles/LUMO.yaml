@@ -1,0 +1,4 @@
+agent_id: LUMO
+kind: adversarial-reviewer
+capabilities: [chat-based-adversarial-review]
+limits: [no-direct-repository-access, output-relayed-by-human]
