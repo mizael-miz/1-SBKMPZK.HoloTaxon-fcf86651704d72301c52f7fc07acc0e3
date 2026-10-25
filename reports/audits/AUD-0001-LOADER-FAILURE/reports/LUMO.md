@@ -14,7 +14,7 @@ H4: unresolved confidence=0.90 - Zero Android-specific error data or version/env
 - [E] Forum error shows "Cannot find module" failure on desktop Electron requiring npm modules (data pack #9)  
 - [E] Three bundling PRs (#13/#14/#15) are all OPEN despite CI-green status—zero merged solutions indicate unresolved uncertainty (data pack #8)  
 - [I] Node smoke test cannot validate Android JS runtime behavior or Obsidian sandbox loader differences from Node module resolution [K]  
-- [I] The 99-byte stub module.exports = require("./dist/main.js") exports a namespace object with __esModule, default, HOLOTAXON_VIEW_TYPE—not the Plugin class directly [E+K]  
+- [I] The 99-byte stub `module.exports = require("./dist/main.js")` exports a namespace object with __esModule, default, HOLOTAXON_VIEW_TYPE—not the Plugin class directly [E+K]  
 - [S] Community "fix-require" plugins existing suggests relative-path resolution is a known pain point in Obsidian ecosystem (data pack #9)  
 - [K] Obsidian plugins run in Electron renderer context on desktop with Chrome V8, while Android uses WebView JavaScript engine with different path/module semantics  
 
