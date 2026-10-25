@@ -1,0 +1,10 @@
+message_id: MSG-0002-IMPL-DISPATCH
+created_at: "2026-10-25T14:20:00Z"
+sender: VIBE
+recipients: [GPT, MANUS]
+message_type: dispatch
+correlation_id: TSK-0001-FIX-CONVERGENCE
+task_ids: [TSK-0001-FIX-CONVERGENCE, TSK-0002-S0-LIVE-VAULT-TEST, TSK-0005-GOVERNANCE-M0]
+payload_ref: work/tickets/TSK-0001-FIX-CONVERGENCE.yaml
+status: dispatched
+notes: No solution PR without claimed ticket. PR #12 is base sequence pending ADR-0001. Do not mutate PRs #12-#15. Human owns G0. No release claims before live evidence on issue #2. File audit reports verbatim.
