@@ -8,7 +8,8 @@
     "dev": "tsc -p tsconfig.build.json --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test tests/*.test.ts",
-    "protocol:validate": "node scripts/validate-stages.mjs"
+    "protocol:validate": "node scripts/validate-stages.mjs",
+    "package:plugin": "node scripts/package-plugin.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
