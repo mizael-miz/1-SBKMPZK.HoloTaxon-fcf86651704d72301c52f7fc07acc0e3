@@ -2005,4 +2005,4 @@ ${error.issues.map((i) => `[${i.severity}] ${i.code}: ${i.message}`).join("\n")}
 function showError(error) {
   new import_obsidian2.Notice(errorText(error), 1e4);
 }
-module.exports = module.exports.default;
+module.exports = module.exports.default ?? module.exports;

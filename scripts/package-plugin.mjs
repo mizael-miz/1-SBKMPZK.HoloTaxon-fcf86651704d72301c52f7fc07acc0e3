@@ -13,8 +13,11 @@ if (manifest.version !== packageJson.version) {
 const entryPath = path.join(root, "main.js");
 if (!fs.existsSync(entryPath)) throw new Error("Missing generated main.js; run npm run build first.");
 const entrypoint = fs.readFileSync(entryPath, "utf8");
-if (!entrypoint.includes("module.exports = module.exports.default;")) {
-  throw new Error("main.js must export the bundled plugin constructor directly.");
+if (!entrypoint.includes("module.exports = module.exports.default ?? module.exports;")) {
+  throw new Error("main.js must end with dual-loader export normalization.");
+}
+if (fs.existsSync(path.join(root, "dist"))) {
+  throw new Error("The shipped repository tree must not contain dist/; main.js must be self-contained.");
 }
 if (entrypoint.includes('require("./dist/')) {
   throw new Error('main.js must not depend on a separate "./dist/" runtime module.');

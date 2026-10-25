@@ -22,7 +22,7 @@ const buildOptions = {
     ...nodeBuiltins,
   ])],
   footer: {
-    js: "module.exports = module.exports.default;",
+    js: "module.exports = module.exports.default ?? module.exports;",
   },
   sourcemap: false,
   logLevel: "info",
