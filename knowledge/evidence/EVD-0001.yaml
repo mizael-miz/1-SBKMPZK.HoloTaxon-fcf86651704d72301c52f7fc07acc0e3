@@ -1,0 +1,8 @@
+evidence_id: EVD-0001
+title: Root main.js wrapper on main
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/blob/main/main.js
+observed_at: "2026-10-25"
+commit: 99d10554ee7c6d99d91a5f244bf1deb942b41ddd
+observation: "main.js is a short generated wrapper delegating to require('./dist/main.js')."
+limitations: [repository content only; does not prove actual installed artifact or loader failure]
