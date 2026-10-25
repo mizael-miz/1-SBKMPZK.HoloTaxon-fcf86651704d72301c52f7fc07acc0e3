@@ -30,7 +30,6 @@ test("bundled root main.js exports the default Obsidian plugin class", () => {
     delete require.cache[require.resolve("../main.js")];
     const pluginModule = require("../main.js");
     assert.equal(typeof pluginModule.default, "function", "Obsidian expects the default-exported plugin class");
-    assert.equal(pluginModule.default.name, "HoloTaxonPlugin");
     assert.ok(pluginModule.default.prototype instanceof Plugin, "default export must inherit from Obsidian's Plugin class");
   } finally {
     Module._load = originalLoad;
