@@ -1,0 +1,7 @@
+hypothesis_id: HYP-0002
+title: Obsidian loader rejects relative require
+status: contested
+claim: The target loader evaluates main.js without Node file-based module resolution, so require('./dist/main.js') fails.
+predictions: [real loader reports relative module resolution error; self-contained bundle passes]
+counterevidence_or_limits: [PR #13 harness simulates this constraint but is not live reproduction]
+pending: AUD-0001
