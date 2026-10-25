@@ -1,0 +1,4 @@
+message_id: MSG-0002-IMPL-DISPATCH
+canonical_message: coordination/bus/MSG-0002-IMPL-DISPATCH.yaml
+recipient: MANUS
+status: pointer
