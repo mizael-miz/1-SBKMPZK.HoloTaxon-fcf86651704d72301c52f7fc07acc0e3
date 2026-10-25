@@ -1,0 +1,11 @@
+event_id: EVT-0004
+event_type: audit-prompt-placeholder-replaced
+occurred_at: "2026-10-25T14:50:11Z"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: placeholder
+state_after: exact-human-relayed-prompt-recorded
+artifacts: [reports/audits/AUD-0001-LOADER-FAILURE/prompt]
+correlation_id: TSK-0005-GOVERNANCE-M0
+provenance: Exact audit prompt relayed by the human in the conversation and written to the prompt artifact verbatim; commit 52cd7792c07c037a546b2e2f8fc5dc724dafac93.
+chronology_note: Prompt replacement occurred before all six reports were filed; event numbering follows the owner's specified EVT-0003/EVT-0004 assignment.
