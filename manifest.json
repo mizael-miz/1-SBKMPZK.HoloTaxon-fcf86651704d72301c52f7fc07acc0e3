@@ -1,0 +1,9 @@
+{
+  "id": "holotaxon",
+  "name": "HoloTaxon",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Schema-driven biodiversity graph runtime with three biological/world/classification axes and active Layer 2 concept operators.",
+  "author": "HoloTaxon project",
+  "isDesktopOnly": false
+}

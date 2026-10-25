@@ -1,0 +1,8 @@
+.holotaxon-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; }
+.holotaxon-stats { margin: 0.75rem 0; }
+.holotaxon-valid { border-inline-start: 3px solid var(--color-green); padding-inline-start: 0.75rem; }
+.holotaxon-invalid { border-inline-start: 3px solid var(--color-red); padding-inline-start: 0.75rem; }
+.holotaxon-table { width: 100%; display: block; overflow-x: auto; border-collapse: collapse; }
+.holotaxon-table th, .holotaxon-table td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--background-modifier-border); text-align: left; }
+.holotaxon-json-input { width: 100%; min-height: 20rem; font-family: var(--font-monospace); }
+.holotaxon-feedback { white-space: pre-wrap; margin-block: 0.5rem; color: var(--text-error); }
