@@ -1,0 +1,4 @@
+agent_id: VIBE
+kind: orchestrator
+capabilities: [repository-read-via-app, web-search, dispatch, coordination]
+limits: [cannot-merge, no-unapproved-release-claims]
