@@ -1,0 +1,9 @@
+evidence_id: EVD-0009
+title: Android install inventory
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2#issuecomment-6400314962
+observed_at: "2026-10-25"
+artifact: reports/audits/AUD-0001-LOADER-FAILURE/live/ANDROID-PROBE-1.md
+observation: "Installed inventory reports dist/ present, root main.js stub 99 bytes, manifest.json and styles.css normal."
+provenance: Human-relayed Android inventory/adjudication note.
+limitations: [no independent device inspection performed in this filing; exact byte counts for files other than main.js were not supplied]
