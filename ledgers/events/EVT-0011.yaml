@@ -1,0 +1,19 @@
+event_id: EVT-0011
+event_type: aud-0001-governance-closeout-recorded
+occurred_at: "2026-10-25T17:56:59Z"
+actor: GPT
+subject: AUD-0001-LOADER-FAILURE
+state_before: adr-acceptance-pending-s0-gate-open
+state_after: adrs-accepted-s0-pass-pr15-merge-pending
+artifacts:
+  - decisions/ADR-0001.yaml
+  - decisions/ADR-0002.yaml
+  - decisions/REGISTER.yaml
+  - work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml
+  - work/tickets/TSK-0003-BUNDLING-SELECTION.yaml
+  - CHANGELOG.md
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/8
+correlation_id: AUD-0001-LOADER-FAILURE
+related_tasks: [TSK-0002-S0-LIVE-VAULT-TEST, TSK-0003-BUNDLING-SELECTION]
+provenance: "ADR-0001 and ADR-0002 accepted by project-owner-human after AUD-0001 Round-2 and Android S0 PASS. PRs #12, #13, and #14 are closed as superseded. At event creation PR #15 is still open/unmerged and main still contains the relative-require stub, so TSK-0003 remains executory and no PR-merge event is asserted. Requested EVT-0007 and EVT-0008 IDs were already occupied by immutable earlier ledger events; fresh IDs EVT-0010 and EVT-0011 are used instead."

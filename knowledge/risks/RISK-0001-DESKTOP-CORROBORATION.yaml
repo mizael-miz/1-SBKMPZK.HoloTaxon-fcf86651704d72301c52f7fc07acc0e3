@@ -1,0 +1,14 @@
+risk_id: RISK-0001-DESKTOP-CORROBORATION
+title: Desktop loader/runtime corroboration deferred
+status: deferred-open-nonblocking
+severity: low-to-moderate
+scope: cross-platform runtime compatibility
+linked_issue: 8
+related_audit: AUD-0001-LOADER-FAILURE
+evidence:
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2#issuecomment-6401105745
+known_state:
+  android_s0: pass
+  desktop_test: not_performed
+  android_obsidian_version: not_recorded
+disposition: "Deferred because no desktop was available during S0. Non-blocking for the Android S0 result; keep visible in the release gate at issue #8 and do not claim desktop acceptance."
