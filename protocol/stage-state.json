@@ -1,0 +1,40 @@
+{
+  "protocol_version": "0.1.0",
+  "updated_at": "2026-10-25",
+  "stages": {
+    "S0": {
+      "status": "blocked",
+      "blocker": "The current execution environment can change and inspect the repository and CI, but it does not provide a running Obsidian application or a disposable vault. Therefore the required live load, command-registration, and startup-console observations cannot honestly be recorded here. G0 remains blocked until a tester runs INSTALL.md in a real Obsidian instance and attaches the requested evidence to issue #2.",
+      "evidence": [
+        "Installation procedure: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/blob/feat/schema-runtime-v0.1.0/INSTALL.md",
+        "Runtime-only bundle packager commit: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/commit/757e2e8e1bac534b05f357c4d0dc122a86098726",
+        "CI packaging/artifact workflow commit: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/commit/38eb4902139c5f9df0cad0e803f0a961110b26bb",
+        "Packaging and protocol CI run: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/actions/runs/40160750724"
+      ]
+    },
+    "S1": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S2": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S3": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S4": {
+      "status": "queued",
+      "evidence": []
+    },
+    "S5": {
+      "status": "queued",
+      "evidence": []
+    },
+    "GR": {
+      "status": "queued",
+      "evidence": []
+    }
+  }
+}

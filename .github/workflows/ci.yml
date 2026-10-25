@@ -25,6 +25,8 @@ jobs:
           node-version: 20
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
+      - name: Validate stage protocol and gate state
+        run: npm run protocol:validate
       - name: Type-check
         run: npm run typecheck
       - name: Run schema-engine tests
@@ -33,3 +35,12 @@ jobs:
         run: npm run build
       - name: Ensure committed build artifacts are reproducible
         run: git diff --exit-code -- main.js styles.css dist
+      - name: Assemble clean installation bundle
+        run: npm run package:plugin
+      - name: Upload installable plugin bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: HoloTaxon-plugin
+          path: artifacts/HoloTaxon/
+          if-no-files-found: error
+          retention-days: 30

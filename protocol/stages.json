@@ -1,0 +1,106 @@
+{
+  "protocol_version": "0.1.0",
+  "protocol_date": "2026-10-25",
+  "timezone": "America/New_York",
+  "required_release_gates": [
+    "G0",
+    "G1",
+    "G2",
+    "G3"
+  ],
+  "stages": [
+    {
+      "id": "S0",
+      "issue": 2,
+      "deadline": "2026-10-27",
+      "depends_on": [],
+      "gate": "G0",
+      "title": "Package and install in disposable vault",
+      "release_blocking": true
+    },
+    {
+      "id": "S1",
+      "issue": 3,
+      "deadline": "2026-10-30",
+      "depends_on": [
+        "G0"
+      ],
+      "gate": "G1",
+      "title": "Verify graph API end-to-end inside Obsidian",
+      "release_blocking": true
+    },
+    {
+      "id": "S2",
+      "issue": 4,
+      "deadline": "2026-11-03",
+      "depends_on": [
+        "G1"
+      ],
+      "gate": "G2",
+      "title": "Prove persistence, recovery, and upgrade non-destruction",
+      "release_blocking": true
+    },
+    {
+      "id": "S3",
+      "issue": 5,
+      "deadline": "2026-11-07",
+      "depends_on": [
+        "G1",
+        "G2"
+      ],
+      "gate": "G3",
+      "title": "Lock down Layer 2 semantics and cross-axis invariants",
+      "release_blocking": true
+    },
+    {
+      "id": "S4",
+      "issue": 6,
+      "deadline": "2026-11-14",
+      "depends_on": [
+        "G3"
+      ],
+      "gate": "G4",
+      "title": "Deliver usable graph exploration and query workflows",
+      "release_blocking": false
+    },
+    {
+      "id": "S5",
+      "issue": 7,
+      "deadline": "2026-11-21",
+      "depends_on": [
+        "G2",
+        "G3"
+      ],
+      "gate": "G5",
+      "title": "Benchmark graph scale and define adapter boundary",
+      "release_blocking": false
+    },
+    {
+      "id": "GR",
+      "issue": 8,
+      "deadline": "2026-11-24",
+      "depends_on": [
+        "G0",
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "gate": "GR",
+      "title": "Adjudicate release readiness",
+      "release_blocking": true
+    }
+  ],
+  "state_enum": [
+    "queued",
+    "ready",
+    "active",
+    "blocked",
+    "pass",
+    "fail",
+    "deferred"
+  ],
+  "initial_state": "queued",
+  "state_file": "protocol/stage-state.json"
+}
