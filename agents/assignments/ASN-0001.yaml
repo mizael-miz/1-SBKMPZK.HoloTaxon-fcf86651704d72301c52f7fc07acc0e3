@@ -1,0 +1,8 @@
+assignment_id: ASN-0001
+agent_id: PERPLEXITY
+role: researcher
+ticket_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+status: dispatched
+objective: Produce a web-cited audit of the Obsidian plugin loader/export contract and claimed relative-require failure.
+deliverable: reports/audits/AUD-0001-LOADER-FAILURE/PERPLEXITY.md
+constraints: [web-citations-required, preserve-contrary-evidence, no-implementation]
