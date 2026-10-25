@@ -1,0 +1,25 @@
+adr_id: ADR-0001
+title: "Fix sequence: #12 as base; bundling selection after audit; live G0 gate before release claims"
+status: proposed
+created_at: "2026-10-25T14:20:00Z"
+decision_maker: project-owner-human
+context: >-
+  Competing entrypoint fixes exist in PRs #12, #13, #14, and #15. Governance
+  bootstrap must not modify those PRs. The export/loader contract remains under audit.
+decision:
+  base_sequence: PR-12
+  bundling_selection: after_AUD-0001
+  live_G0_required_before_release_claims: true
+  duplicate_closure_requires: chosen_sequence_and_recorded_rationale
+alternatives:
+  - retain split-module export fix
+  - select one single-file bundling implementation after audit
+consequences:
+  - no new solution PRs without a claimed ticket
+  - G0 remains human-owned and blocked until real-vault evidence is recorded on issue #2
+evidence_refs: [EVD-0001, EVD-0002, EVD-0005, EVD-0007]
+ticket_refs: [TSK-0001-FIX-CONVERGENCE, TSK-0002-S0-LIVE-VAULT-TEST, TSK-0003-BUNDLING-SELECTION, TSK-0004-EXTERNAL-LOADER-AUDIT]
+human_acceptance:
+  status: pending
+  accepted_at: null
+  accepted_by: null
