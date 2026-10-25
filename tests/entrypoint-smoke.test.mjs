@@ -67,7 +67,8 @@ test("Android loader contract: real bundle, AST whitelist, and negative/positive
   // Without normalization, the namespace object is not a constructor; the F1 footer rescues it.
   const namespaceWithoutNormalization = `class FixturePlugin extends require("obsidian").Plugin {}\nmodule.exports = { default: FixturePlugin };`;
   assert.throws(() => assertPluginConstructor(evaluate(namespaceWithoutNormalization)), /plugin constructor/);
-  const namespaceWithNormalization = namespaceWithoutNormalization + '\\nmodule.exports = module.exports.default ?? module.exports;';
+  const namespaceWithNormalization = namespaceWithoutNormalization + `
+module.exports = module.exports.default ?? module.exports;`;
   assertPluginConstructor(evaluate(namespaceWithNormalization));
 
   assert.throws(() => assertOnlyWhitelistedImports('require("../escape"); require("not-whitelisted");'), /non-whitelisted module specifiers/);
