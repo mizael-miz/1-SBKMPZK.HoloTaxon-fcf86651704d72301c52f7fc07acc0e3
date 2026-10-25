@@ -1,0 +1,9 @@
+evidence_id: EVD-0008
+title: Live Android loader error — no exports detected
+status: recorded
+source: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2#issuecomment-6400314962
+observed_at: "2026-10-25"
+artifact: reports/audits/AUD-0001-LOADER-FAILURE/live/ANDROID-CAPTURE-1.md
+observation: "Existing Android install failed with the OCR-relayed error: Failed to load plugin holotaxon. No exports detected."
+provenance: Human-relayed in-app console capture; OCR transcription may contain glyph noise.
+limitations: [existing install only; before reinstall; no disposable-vault acceptance; stack is OCR-relayed]
