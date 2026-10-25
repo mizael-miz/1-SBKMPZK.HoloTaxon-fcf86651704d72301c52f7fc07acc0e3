@@ -1,0 +1,6 @@
+evidence_id: EVD-0004
+title: Forum require-stack error in desktop Electron
+status: pending-verification
+source: external forum report to be pinned by AUD-0001
+observation: A reported require-stack error occurred in a desktop Electron environment.
+limitations: [not a live HoloTaxon reproduction; environment and relevance must be assessed]
