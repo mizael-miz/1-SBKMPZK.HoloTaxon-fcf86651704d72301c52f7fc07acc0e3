@@ -5,7 +5,7 @@ import test from "node:test";
 const require = createRequire(import.meta.url);
 const Module = require("node:module");
 
-test("root main.js exports the Obsidian plugin constructor", () => {
+test("bundled root main.js exports the default Obsidian plugin class", () => {
   class Plugin {}
 
   const obsidianStubs = {
@@ -17,6 +17,7 @@ test("root main.js exports the Obsidian plugin constructor", () => {
     Setting: class Setting {},
     TFile: class TFile {},
     WorkspaceLeaf: class WorkspaceLeaf {},
+    normalizePath: value => value,
   };
 
   const originalLoad = Module._load;
@@ -26,10 +27,11 @@ test("root main.js exports the Obsidian plugin constructor", () => {
   };
 
   try {
-    const EntryPoint = require("../main.js");
-    assert.equal(typeof EntryPoint, "function", "main.js must return a class/function, not a module namespace object");
-    assert.equal(EntryPoint.name, "HoloTaxonPlugin");
-    assert.ok(EntryPoint.prototype instanceof Plugin, "entrypoint must inherit from Obsidian's Plugin class");
+    delete require.cache[require.resolve("../main.js")];
+    const pluginModule = require("../main.js");
+    assert.equal(typeof pluginModule.default, "function", "Obsidian expects the default-exported plugin class");
+    assert.equal(pluginModule.default.name, "HoloTaxonPlugin");
+    assert.ok(pluginModule.default.prototype instanceof Plugin, "default export must inherit from Obsidian's Plugin class");
   } finally {
     Module._load = originalLoad;
   }
