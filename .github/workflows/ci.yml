@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - main
+      - "fix/**"
 
 permissions:
   contents: read
@@ -23,6 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
       - name: Validate stage protocol and gate state
@@ -31,12 +33,12 @@ jobs:
         run: npm run typecheck
       - name: Run schema-engine tests
         run: npm test
-      - name: Build Obsidian plugin
+      - name: Build single-file Obsidian plugin
         run: npm run build
-      - name: Smoke-test Obsidian plugin entrypoint export
+      - name: Smoke-test bundled Obsidian plugin export
         run: npm run test:entrypoint
-      - name: Ensure committed build artifacts are reproducible
-        run: git diff --exit-code -- main.js styles.css dist
+      - name: Ensure committed TypeScript build artifacts are reproducible
+        run: git diff --exit-code -- styles.css dist
       - name: Assemble clean installation bundle
         run: npm run package:plugin
       - name: Upload installable plugin bundle
