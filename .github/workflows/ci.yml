@@ -25,6 +25,8 @@ jobs:
           node-version: 20
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
+      - name: Validate stage protocol and gate state
+        run: npm run protocol:validate
       - name: Type-check
         run: npm run typecheck
       - name: Run schema-engine tests
