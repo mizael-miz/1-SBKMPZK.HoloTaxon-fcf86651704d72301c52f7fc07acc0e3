@@ -270,7 +270,7 @@ Citations:
 [24] Templater: custom.js + module load throws error : r/ObsidianMD https://www.reddit.com/r/ObsidianMD/comments/1gjc1k0/templater_custom.js_module_load_throws_error/
 [25] Why does fs.writeFile not save file? - Devs - Obsidian Forum https://forum.obsidian.md/t/why-does-fs.writeFile-not-save-file/31972
 [26] Obsidian Cheatsheet.md - GitHub https://github.com/kobbled/Obsidian-Cheatsheet/blob/main/Obsidian%20Cheatsheet.md
-[27] Does there exist self-hosting solutions? : r/ObsidianMD - Reddit https://www.reddit.com/r/ObsidianMD/comments/kw1... 
+[27] Does there exist self-hosting solutions? : r/ObsidianMD - Reddit https://www.reddit.com/r/ObsidianMD/comments/kw1l91/does_there_exist_self-hosting_solutions/ 
 [28] Regression: Even in a new vault, typing "[Untit#" shows "No match ... https://forum.obsidian.md/t/regression-even-in-a-new-vault-typing-untit/106446
 [29] How do I work with Obsidian on Mobile? - Page 11 - Basement https://forum.obsidian.md/t/how-do-i-work-with-Obsidian-on-Mobile/471?page=11
 [30] GitHub - KosmosisDire/obsidian-webpage-export https://github.com/KosmosisDire/obsidian-webpage-export
