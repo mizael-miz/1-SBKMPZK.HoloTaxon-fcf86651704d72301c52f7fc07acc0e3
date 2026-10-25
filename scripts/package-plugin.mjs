@@ -11,8 +11,9 @@ if (manifest.version !== packageJson.version) {
   throw new Error(`Version mismatch: package.json=${packageJson.version}, manifest.json=${manifest.version}`);
 }
 if (!fs.existsSync(path.join(root, "main.js"))) throw new Error("Missing generated main.js; run npm run build first.");
-if (!fs.readFileSync(path.join(root, "main.js"), "utf8").includes('require("./dist/main.js")')) {
-  throw new Error('main.js does not reference the expected "./dist/main.js" entrypoint.');
+const entrypoint = fs.readFileSync(path.join(root, "main.js"), "utf8");
+if (!entrypoint.includes('require("./dist/main.js").default')) {
+  throw new Error('main.js must export the plugin constructor from require("./dist/main.js").default.');
 }
 if (!fs.existsSync(path.join(root, "dist", "main.js"))) throw new Error("Missing dist/main.js; run npm run build first.");
 
