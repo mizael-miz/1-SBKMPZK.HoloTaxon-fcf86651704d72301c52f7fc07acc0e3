@@ -1,0 +1,2 @@
+role_id: verifier
+purpose: Independently check acceptance criteria against reproducible evidence and the exact tested artifact.
