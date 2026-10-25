@@ -1,0 +1,10 @@
+event_id: EVT-0002
+event_type: audit-dispatched
+occurred_at: "2026-10-25T14:20:00Z"
+actor: VIBE
+subject: AUD-0001-LOADER-FAILURE
+state_before: not-dispatched
+state_after: dispatched-pending-human-relay-of-prompt
+artifacts: [coordination/bus/MSG-0001-AUDIT-DISPATCH.yaml]
+correlation_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+provenance: owner directive Vibe, 2026-10-25T14:20Z
