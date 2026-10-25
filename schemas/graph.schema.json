@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://holotaxon.local/schemas/graph.schema.json",
+  "title": "HoloTaxon Graph Snapshot",
+  "type": "object",
+  "required": ["graph_format_version", "graph_id", "generation", "metadata", "entities", "relations"],
+  "properties": {
+    "graph_format_version": { "type": "string" },
+    "graph_id": { "type": "string", "minLength": 1 },
+    "generation": { "type": "integer", "minimum": 0 },
+    "metadata": {
+      "type": "object",
+      "required": ["title", "created_at", "updated_at", "plugin_version"],
+      "properties": {
+        "title": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "plugin_version": { "type": "string" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "entities": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/entity" }
+    },
+    "relations": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "extension_data": { "type": "object" }
+  },
+  "$defs": {
+    "status": { "type": "string", "enum": ["draft", "active", "deprecated", "tombstoned"] },
+    "entity": {
+      "type": "object",
+      "required": ["id", "entity_type", "axis", "label", "revision", "status", "concept_bindings", "properties", "created_at", "updated_at"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "entity_type": { "type": "string", "minLength": 1 },
+        "axis": { "type": "string", "enum": ["B", "M", "W", "L2", "L3"] },
+        "label": { "type": "string", "minLength": 1 },
+        "revision": { "type": "integer", "minimum": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "concept_bindings": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "properties": { "type": "object" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "tombstoned_at": { "type": "string", "format": "date-time" },
+        "extension_data": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "relation": {
+      "type": "object",
+      "required": ["id", "relation_type", "from", "to", "revision", "status", "concept_bindings", "properties", "created_at", "updated_at"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "relation_type": { "type": "string", "minLength": 1 },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "revision": { "type": "integer", "minimum": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "concept_bindings": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "properties": { "type": "object" },
+        "assertion": { "type": "object" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "tombstoned_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

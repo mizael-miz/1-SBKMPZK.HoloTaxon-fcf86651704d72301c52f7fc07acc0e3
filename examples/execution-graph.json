@@ -1,0 +1,204 @@
+{
+  "graph_format_version": "1.0.0",
+  "graph_id": "EXAMPLE-LAYER2-ACTIVE-SCHEMA-001",
+  "generation": 0,
+  "metadata": {
+    "title": "Executable Layer 2 schema example",
+    "created_at": "2026-10-24T00:00:00.000Z",
+    "updated_at": "2026-10-24T00:00:00.000Z",
+    "plugin_version": "0.1.0",
+    "notes": [
+      "Illustrative data, not a scientific claim.",
+      "The Layer2Concept adds a required gene_flow_model field to bound Population records and adds a typed relation type REPRODUCTIVE_BOUNDARY_WITH.",
+      "The same concept adds required exchange_scope to the GENE_FLOW_WITH relation schema."
+    ]
+  },
+  "entities": {
+    "L2-POP-EVOLUTIONARY": {
+      "id": "L2-POP-EVOLUTIONARY",
+      "entity_type": "Layer2Concept",
+      "axis": "L2",
+      "label": "Evolutionary population profile",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": [],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "concept_kind": "population_definition",
+        "lifecycle": "active",
+        "applies_to_entity_types": ["Population"],
+        "applies_to_relation_types": ["GENE_FLOW_WITH", "REPRODUCTIVE_BOUNDARY_WITH"],
+        "extends_concept_ids": [],
+        "requires_concept_ids": [],
+        "excludes_concept_ids": [],
+        "definition_version": "1.0.0",
+        "rationale": "Population states analysed as evolutionary units must declare a gene-flow model. This profile does not determine species boundaries by itself.",
+        "applicability": {
+          "description": "Applies to evolutionary population analyses; populations may carry separate ecological profiles as well.",
+          "required_property_values": { "population_basis": "evolutionary" }
+        },
+        "effects": {
+          "entities": {
+            "add_fields": {
+              "gene_flow_model": {
+                "type": "string",
+                "required": true,
+                "enum": ["none_detected", "limited", "recurrent", "continuous", "unknown"],
+                "description": "Qualitative summary of gene exchange; must not be substituted for a quantitative estimate."
+              }
+            },
+            "required_fields": ["gene_flow_model"],
+            "constraints": [
+              { "field": "population_basis", "operator": "equals", "value": "evolutionary", "message": "Evolutionary population profile requires population_basis=evolutionary." }
+            ],
+            "allow_outgoing_relations": ["GENE_FLOW_WITH", "REPRODUCTIVE_BOUNDARY_WITH"],
+            "allow_incoming_relations": ["GENE_FLOW_WITH", "REPRODUCTIVE_BOUNDARY_WITH"]
+          },
+          "relations": {
+            "add_property_fields": {
+              "exchange_scope": { "type": "string", "required": true, "description": "Spatial, temporal, or genomic scope of the exchange assertion." }
+            },
+            "required_property_fields": ["exchange_scope"]
+          },
+          "add_relation_types": [
+            {
+              "id": "REPRODUCTIVE_BOUNDARY_WITH",
+              "description": "A scoped assertion of a reproductive boundary between populations without presupposing complete isolation or species rank.",
+              "from_types": ["Population"],
+              "to_types": ["Population"],
+              "symmetric": true,
+              "allow_self_loop": false,
+              "properties": {
+                "barrier_kind": { "type": "string", "required": true, "enum": ["prezygotic", "postzygotic", "ecological", "temporal", "mixed", "unknown"] },
+                "permeability": { "type": "string", "required": true, "enum": ["complete_in_sample", "strong", "partial", "context_dependent", "unknown"] }
+              },
+              "required_properties": ["barrier_kind", "permeability"]
+            }
+          ]
+        }
+      }
+    },
+    "POP-001": {
+      "id": "POP-001",
+      "entity_type": "Population",
+      "axis": "B",
+      "label": "Northern contact-zone population",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": ["L2-POP-EVOLUTIONARY"],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "population_basis": "evolutionary",
+        "identity_rule": "Continuity of the locally connected breeding and ancestry process across sampled generations.",
+        "unit_definition": "Organismal individual under the species' stated reproductive and developmental model.",
+        "gene_flow_model": "recurrent",
+        "sampling_frame_notes": "Sampled across three habitat patches and two contact periods."
+      }
+    },
+    "POP-002": {
+      "id": "POP-002",
+      "entity_type": "Population",
+      "axis": "B",
+      "label": "Southern contact-zone population",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": ["L2-POP-EVOLUTIONARY"],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "population_basis": "evolutionary",
+        "identity_rule": "Continuity of the locally connected breeding and ancestry process across sampled generations.",
+        "unit_definition": "Organismal individual under the species' stated reproductive and developmental model.",
+        "gene_flow_model": "limited",
+        "sampling_frame_notes": "Sampled across two habitat patches and repeated contact periods."
+      }
+    },
+    "L3-METRIC-RI": {
+      "id": "L3-METRIC-RI",
+      "entity_type": "Layer3Metric",
+      "axis": "L3",
+      "label": "Hybrid fertility estimate",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": [],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "construct_ref": "reproductive_barrier_strength",
+        "measurand": "proportion_of_observed_hybrid_offspring_reproducing_successfully",
+        "method_description": "Estimate based on a defined cohort and observation interval.",
+        "output_domain": "bounded_numeric",
+        "unit_id": "proportion",
+        "assumptions": ["Follow-up observation covers the stated reproductive interval."],
+        "selection_rationale": "Relevant to postzygotic reproductive barriers, but not sufficient alone to decide species status.",
+        "applicable_entity_types": ["Population"]
+      }
+    },
+    "PLACE-014": {
+      "id": "PLACE-014",
+      "entity_type": "Place",
+      "axis": "W",
+      "label": "Kestrel Basin contact zone",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": [],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "place_kind": "hybrid_contact_region",
+        "boundary_basis": "surveyed habitat and repeated contact observations",
+        "geometry_ref": "fictional-geometry:kestrel-basin"
+      }
+    }
+  },
+  "relations": {
+    "REL-GENE-FLOW-001": {
+      "id": "REL-GENE-FLOW-001",
+      "relation_type": "GENE_FLOW_WITH",
+      "from": "POP-001",
+      "to": "POP-002",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": [],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "directionality": "bidirectional",
+        "genomic_scope": "selected neutral and barrier-linked loci",
+        "exchange_scope": "repeated contact periods; genomic scope limited to sampled loci"
+      },
+      "assertion": {
+        "epistemic_status": "supported",
+        "definition_refs": ["L2-POP-EVOLUTIONARY"],
+        "evidence_refs": ["MEASUREMENT-001"],
+        "source_refs": ["INWORLD-STUDY-008"],
+        "scope": { "spatial_scope_ref": "PLACE-014", "resolution_level": "population" }
+      }
+    },
+    "REL-BOUNDARY-001": {
+      "id": "REL-BOUNDARY-001",
+      "relation_type": "REPRODUCTIVE_BOUNDARY_WITH",
+      "from": "POP-001",
+      "to": "POP-002",
+      "revision": 1,
+      "status": "active",
+      "concept_bindings": [],
+      "created_at": "2026-10-24T00:00:00.000Z",
+      "updated_at": "2026-10-24T00:00:00.000Z",
+      "properties": {
+        "barrier_kind": "postzygotic",
+        "permeability": "partial",
+        "exchange_scope": "recurrent contact; some hybrid classes are infertile and others contribute to later generations"
+      },
+      "assertion": {
+        "epistemic_status": "inferred",
+        "definition_refs": ["L2-POP-EVOLUTIONARY"],
+        "evidence_refs": ["MEASUREMENT-001"],
+        "scope": { "spatial_scope_ref": "PLACE-014", "resolution_level": "population_pair" },
+        "confidence": { "kind": "qualitative", "value": "moderate", "method_ref": "L3-METRIC-RI" }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://holotaxon.local/schemas/registry.schema.json",
+  "title": "HoloTaxon Core Registry",
+  "type": "object",
+  "required": ["registry_format_version", "bundled_registry_version", "entity_types", "relation_types", "metadata"],
+  "properties": {
+    "registry_format_version": { "type": "string" },
+    "bundled_registry_version": { "type": "string" },
+    "entity_types": { "type": "object", "additionalProperties": { "$ref": "#/$defs/entityType" } },
+    "relation_types": { "type": "object", "additionalProperties": { "$ref": "#/$defs/relationType" } },
+    "metadata": { "type": "object", "required": ["description", "upgrade_policy"], "properties": { "description": { "type": "string" }, "upgrade_policy": { "const": "additive-preserve-conflicts" }, "last_merged_bundle_version": { "type": "string" } }, "additionalProperties": true }
+  },
+  "$defs": {
+    "axis": { "type": "string", "enum": ["B", "M", "W", "L2", "L3"] },
+    "field": {
+      "type": "object", "required": ["type"],
+      "properties": {
+        "type": { "enum": ["string", "number", "integer", "boolean", "object", "array", "reference", "reference_list", "string_list", "any"] },
+        "description": { "type": "string" }, "required": { "type": "boolean" }, "nullable": { "type": "boolean" },
+        "enum": { "type": "array" }, "ref_types": { "type": "array", "items": { "type": "string" } },
+        "items": { "$ref": "#/$defs/field" }, "properties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/field" } },
+        "additional_properties": { "type": "boolean" }, "min": { "type": "number" }, "max": { "type": "number" },
+        "min_items": { "type": "integer", "minimum": 0 }, "max_items": { "type": "integer", "minimum": 0 },
+        "unique_items": { "type": "boolean" }, "pattern": { "type": "string" }
+      }, "additionalProperties": false
+    },
+    "entityType": {
+      "type": "object", "required": ["id", "axis", "description", "fields"],
+      "properties": {
+        "id": { "type": "string" }, "axis": { "$ref": "#/$defs/axis" }, "description": { "type": "string" },
+        "fields": { "type": "object", "additionalProperties": { "$ref": "#/$defs/field" } },
+        "immutable_fields": { "type": "array", "items": { "type": "string" } }, "allow_extra_fields": { "type": "boolean" },
+        "allowed_outgoing_relations": { "oneOf": [{ "type": "string", "const": "*" }, { "type": "array", "items": { "type": "string" } }] },
+        "allowed_incoming_relations": { "oneOf": [{ "type": "string", "const": "*" }, { "type": "array", "items": { "type": "string" } }] }, "system": { "type": "boolean" }
+      }, "additionalProperties": false
+    },
+    "relationType": {
+      "type": "object", "required": ["id", "description", "from_types", "to_types", "properties"],
+      "properties": {
+        "id": { "type": "string" }, "description": { "type": "string" },
+        "from_types": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "to_types": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "symmetric": { "type": "boolean" }, "transitive": { "type": "boolean" }, "allow_self_loop": { "type": "boolean" },
+        "properties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/field" } },
+        "required_properties": { "type": "array", "items": { "type": "string" } }, "system": { "type": "boolean" }
+      }, "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
