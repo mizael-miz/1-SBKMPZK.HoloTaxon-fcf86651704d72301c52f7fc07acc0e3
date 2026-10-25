@@ -1,0 +1,6 @@
+evidence_id: EVD-0003
+title: Stack Overflow statement on module.exports and exports.default
+status: pending-verification
+source: external Stack Overflow source to be pinned by AUD-0001
+observation: A third-party statement reportedly discusses CommonJS module.exports and exports.default.
+limitations: [URL, author, exact quotation, retrieval timestamp, and context must be supplied by audit; not authoritative specification]
