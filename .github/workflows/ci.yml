@@ -33,6 +33,8 @@ jobs:
         run: npm test
       - name: Build Obsidian plugin
         run: npm run build
+      - name: Smoke-test plugin entrypoint export
+        run: node scripts/smoke-plugin-load.cjs
       - name: Ensure committed build artifacts are reproducible
         run: git diff --exit-code -- main.js styles.css dist
       - name: Assemble clean installation bundle
