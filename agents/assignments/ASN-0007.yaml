@@ -1,0 +1,7 @@
+assignment_id: ASN-0007
+agent_id: MANUS
+role: verifier
+ticket_id: TSK-0005-GOVERNANCE-M0
+status: active
+objective: Maintain evidence discipline on issue #2, prepare TSK-0002 protocol, and verify governance PR against MASTER.yaml before human review.
+constraints: [weekly-quota-reserve-for-TSK-0001-and-TSK-0002, no-merge, no-release-claim]
