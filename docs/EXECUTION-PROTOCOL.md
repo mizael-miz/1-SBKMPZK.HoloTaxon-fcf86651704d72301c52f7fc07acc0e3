@@ -23,13 +23,13 @@ Transition rules:
 
 | Stage | Deadline | Issue | Depends on | Gate |
 |---|---|---|---|---|
-| S0: package/install in disposable vault | 2026-10-27 | [#2](../issues/2) | None | G0: reproducible installation and runtime load |
-| S1: Obsidian end-to-end API verification | 2026-10-30 | [#3](../issues/3) | G0 | G1: commands and persisted operations work |
-| S2: persistence/recovery/upgrade safety | 2026-11-03 | [#4](../issues/4) | G1 | G2: no silent destructive failure |
-| S3: Layer 2 semantics and cross-axis invariants | 2026-11-07 | [#5](../issues/5) | G1, G2 | G3: normative effects plus regression tests |
-| S4: query and graph exploration workflows | 2026-11-14 | [#6](../issues/6) | relevant G3 contracts | G4: two usable retrieval paths |
-| S5: scale benchmark and adapter decision | 2026-11-21 | [#7](../issues/7) | G2, G3 | G5: measured limits and explicit adapter decision |
-| GR: release adjudication | 2026-11-24 | [#8](../issues/8) | G0–G5 or documented limited-scope exception | GR: recorded ACCEPT / REJECT / DEFER |
+| S0: package/install in disposable vault | 2026-10-27 | [#2](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2) | None | G0: reproducible installation and runtime load |
+| S1: Obsidian end-to-end API verification | 2026-10-30 | [#3](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/3) | G0 | G1: commands and persisted operations work |
+| S2: persistence/recovery/upgrade safety | 2026-11-03 | [#4](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/4) | G1 | G2: no silent destructive failure |
+| S3: Layer 2 semantics and cross-axis invariants | 2026-11-07 | [#5](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/5) | G1, G2 | G3: normative effects plus regression tests |
+| S4: query and graph exploration workflows | 2026-11-14 | [#6](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/6) | relevant G3 contracts | G4: two usable retrieval paths |
+| S5: scale benchmark and adapter decision | 2026-11-21 | [#7](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/7) | G2, G3 | G5: measured limits and explicit adapter decision |
+| GR: release adjudication | 2026-11-24 | [#8](https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/8) | G0–G5 or documented limited-scope exception | GR: recorded ACCEPT / REJECT / DEFER |
 
 ## Hard release gates
 
