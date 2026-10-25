@@ -10,39 +10,27 @@ if (manifest.id !== "holotaxon") throw new Error(`Unexpected plugin id: ${manife
 if (manifest.version !== packageJson.version) {
   throw new Error(`Version mismatch: package.json=${packageJson.version}, manifest.json=${manifest.version}`);
 }
-if (!fs.existsSync(path.join(root, "main.js"))) throw new Error("Missing generated main.js; run npm run build first.");
-const entrypoint = fs.readFileSync(path.join(root, "main.js"), "utf8");
-if (!entrypoint.includes('require("./dist/main.js").default')) {
-  throw new Error('main.js must export the plugin constructor from require("./dist/main.js").default.');
+
+const required = ["main.js", "manifest.json", "styles.css"];
+for (const file of required) {
+  if (!fs.existsSync(path.join(root, file))) throw new Error(`Missing required plugin file: ${file}; run npm run build first.`);
 }
-if (!fs.existsSync(path.join(root, "dist", "main.js"))) throw new Error("Missing dist/main.js; run npm run build first.");
+
+const entrypoint = fs.readFileSync(path.join(root, "main.js"), "utf8");
+if (!entrypoint.includes('require("obsidian")') && !entrypoint.includes("require('obsidian')")) {
+  throw new Error("main.js does not retain Obsidian's runtime API as an external dependency.");
+}
+if (/\brequire\((['"])(?:\.\.?\/|\.\.?\\)/.test(entrypoint)) {
+  throw new Error("main.js contains a relative runtime require; the packaged plugin must be a single self-contained bundle.");
+}
 
 const output = path.join(root, "artifacts", "HoloTaxon");
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
+for (const file of required) fs.copyFileSync(path.join(root, file), path.join(output, file));
 
-for (const file of ["main.js", "manifest.json", "styles.css"]) {
-  const source = path.join(root, file);
-  if (!fs.existsSync(source)) throw new Error(`Missing required plugin file: ${file}`);
-  fs.copyFileSync(source, path.join(output, file));
+const packagedFiles = fs.readdirSync(output).sort();
+if (packagedFiles.join(",") !== "main.js,manifest.json,styles.css") {
+  throw new Error(`Unexpected packaged files: ${packagedFiles.join(", ")}`);
 }
-fs.cpSync(path.join(root, "dist"), path.join(output, "dist"), { recursive: true });
-
-function walk(directory) {
-  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    const absolute = path.join(directory, entry.name);
-    return entry.isDirectory() ? walk(absolute) : [absolute];
-  });
-}
-
-const packagedFiles = walk(output);
-const relativeFiles = packagedFiles.map((file) => path.relative(output, file).split(path.sep).join("/"));
-const unexpected = relativeFiles.filter((file) => !(
-  file === "main.js" ||
-  file === "manifest.json" ||
-  file === "styles.css" ||
-  (file.startsWith("dist/") && file.endsWith(".js"))
-));
-if (unexpected.length) throw new Error(`Unexpected files in plugin bundle: ${unexpected.join(", ")}`);
-if (!relativeFiles.includes("dist/main.js")) throw new Error("Bundle is missing dist/main.js.");
-console.log(`Packaged HoloTaxon ${manifest.version}: ${relativeFiles.length} runtime files in ${path.relative(root, output)}`);
+console.log(`Packaged HoloTaxon ${manifest.version}: single-file runtime bundle in ${path.relative(root, output)}`);
