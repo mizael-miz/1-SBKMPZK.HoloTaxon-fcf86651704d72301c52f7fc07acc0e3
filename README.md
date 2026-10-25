@@ -5,7 +5,7 @@ HoloTaxon is a schema-driven Obsidian graph runtime for fictional biodiversity. 
 - **Layer 2 is active:** bound concepts alter the effective schema of applicable records and relationships. They can add, override, remove, require, or forbid fields; impose constraints; restrict edges; and define relation types. Conflicts fail closed rather than being resolved by arbitrary ordering.
 - **Layer 3 is metrological:** metrics, measurements, uncertainty, and evidence evaluation can inform claims, but cannot reshape Layer 1 schemas.
 
-This repository contains the plugin source, executable graph API, core registry, schema engine, JSON schemas, and a Layer 2 execution example. The next bundle should include the compiled `main.js`, `manifest.json`, `styles.css` if retained, and a separate installation guide.
+This repository contains the plugin source, executable graph API, core registry, schema engine, JSON schemas, and a Layer 2 execution example.
 
 ## Runtime data files
 
@@ -16,13 +16,15 @@ On first launch the plugin initializes `HoloTaxon/graph.json` and `HoloTaxon/reg
 ## Build and checks
 
 ```sh
-npm install
+npm ci
 npm run typecheck
 npm test
 npm run build
+npm run test:entrypoint
+npm run package:plugin
 ```
 
-The build creates root `main.js`, `styles.css`, and `dist/*.js`. Root `main.js` preserves the default plugin export and loads the maintained source modules compiled to CommonJS. Obsidian is the only runtime dependency; TypeScript and `tsx` are development/test dependencies.
+The build compiles the TypeScript modules for source-level checks, then uses esbuild to produce one self-contained CommonJS `main.js` from `src/main.ts`. The generated `main.js` is intentionally ignored by Git; CI builds and tests it before packaging. The installation artifact contains only `main.js`, `manifest.json`, and `styles.css`. Obsidian's `obsidian` API, Electron, CodeMirror/Lezer packages, and Node built-ins remain external; project-local runtime modules are bundled into `main.js`.
 
 ## Scale boundary
 
