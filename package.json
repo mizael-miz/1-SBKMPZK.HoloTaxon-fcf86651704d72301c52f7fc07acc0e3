@@ -8,6 +8,7 @@
     "dev": "tsc -p tsconfig.build.json --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test tests/*.test.ts",
+    "test:entrypoint": "node --test tests/entrypoint-smoke.test.mjs",
     "protocol:validate": "node scripts/validate-stages.mjs",
     "package:plugin": "node scripts/package-plugin.mjs"
   },
