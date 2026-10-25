@@ -1,0 +1,8 @@
+assignment_id: ASN-0005
+agent_id: LUMO
+role: adversarial-reviewer
+ticket_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+status: dispatched
+objective: Adversarially review loader hypotheses, evidence quality, and acceptance oracle.
+deliverable: reports/audits/AUD-0001-LOADER-FAILURE/LUMO.md
+constraints: [challenge-both-hypotheses, no-implementation]
