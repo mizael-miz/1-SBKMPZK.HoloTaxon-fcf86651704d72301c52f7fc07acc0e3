@@ -1,6 +1,7 @@
 hypothesis_id: HYP-0004
 title: Other environment-specific cause
-status: contested
+status: unresolved
 claim: Obsidian version, restricted mode, Android filesystem behavior, or another runtime condition may cause the failure.
 predictions: [controlled tests vary environment while holding artifact and steps constant]
-pending: AUD-0001
+adjudication_source: AUD-0001-LOADER-FAILURE
+pending: live evidence for app version, restricted mode, and Android runtime
