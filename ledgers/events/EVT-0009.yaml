@@ -1,0 +1,13 @@
+event_id: EVT-0009
+event_type: governance-pull-request-opened
+occurred_at: "2026-10-25"
+actor: GPT
+subject: AUD-0001-ROUND-2-CLOSURE
+state_before: governance-change-committed
+state_after: pull-request-open-pending-human-review
+artifacts:
+  - https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19
+  - index/INDEX.yaml
+correlation_id: TSK-0004-EXTERNAL-LOADER-AUDIT
+related_tasks: [TSK-0003-BUNDLING-SELECTION]
+provenance: "PR #19 proposes the governance-only Round-2 filing against main. It is open for human review; no merge or human acceptance is implied."

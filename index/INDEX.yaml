@@ -13,8 +13,8 @@ entries:
   - {id: INDEX-0001, path: index/INDEX.yaml, kind: index, status: proposed}
   - {id: TSK-0001-FIX-CONVERGENCE, path: work/tickets/TSK-0001-FIX-CONVERGENCE.yaml, kind: ticket, status: resolving}
   - {id: TSK-0002-S0-LIVE-VAULT-TEST, path: work/tickets/TSK-0002-S0-LIVE-VAULT-TEST.yaml, kind: ticket, status: evidence-phase-complete}
-  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: ready}
-  - {id: TSK-0004-EXTERNAL-LOADER-AUDIT, path: work/tickets/TSK-0004-EXTERNAL-LOADER-AUDIT.yaml, kind: ticket, status: resolving, closure: pending-round-2-auditor-confirmation}
+  - {id: TSK-0003-BUNDLING-SELECTION, path: work/tickets/TSK-0003-BUNDLING-SELECTION.yaml, kind: ticket, status: executory}
+  - {id: TSK-0004-EXTERNAL-LOADER-AUDIT, path: work/tickets/TSK-0004-EXTERNAL-LOADER-AUDIT.yaml, kind: ticket, status: resolved}
   - {id: TSK-0005-GOVERNANCE-M0, path: work/tickets/TSK-0005-GOVERNANCE-M0.yaml, kind: ticket, status: solution_pending}
   - {id: ASN-0001, path: agents/assignments/ASN-0001.yaml, kind: assignment, status: dispatched}
   - {id: ASN-0002, path: agents/assignments/ASN-0002.yaml, kind: assignment, status: dispatched}
@@ -23,10 +23,10 @@ entries:
   - {id: ASN-0005, path: agents/assignments/ASN-0005.yaml, kind: assignment, status: dispatched}
   - {id: ASN-0006, path: agents/assignments/ASN-0006.yaml, kind: assignment, status: active}
   - {id: ASN-0007, path: agents/assignments/ASN-0007.yaml, kind: assignment, status: active}
-  - {id: HYP-0001, path: knowledge/hypotheses/HYP-0001.yaml, kind: hypothesis, status: refuted-live, minority_dissent: LUMO}
+  - {id: HYP-0001, path: knowledge/hypotheses/HYP-0001.yaml, kind: hypothesis, status: refuted-live, minority_dissent: LUMO-withdrawn-round-2}
   - {id: HYP-0002, path: knowledge/hypotheses/HYP-0002.yaml, kind: hypothesis, status: confirmed-live}
   - {id: HYP-0003, path: knowledge/hypotheses/HYP-0003.yaml, kind: hypothesis, status: eliminated}
-  - {id: HYP-0004, path: knowledge/hypotheses/HYP-0004.yaml, kind: hypothesis, status: closed-low-residual}
+  - {id: HYP-0004, path: knowledge/hypotheses/HYP-0004.yaml, kind: hypothesis, status: residual-low, open_action: capture-Android-Obsidian-app-version}
   - {id: EVD-0001, path: knowledge/evidence/EVD-0001.yaml, kind: evidence-record, status: recorded}
   - {id: EVD-0002, path: knowledge/evidence/EVD-0002.yaml, kind: evidence-record, status: pending-verification}
   - {id: EVD-0003, path: knowledge/evidence/EVD-0003.yaml, kind: evidence-record, status: pending-verification}
@@ -63,6 +63,9 @@ entries:
   - {id: EVT-0004, path: ledgers/events/EVT-0004.yaml, kind: event, status: recorded}
   - {id: EVT-0005, path: ledgers/events/EVT-0005.yaml, kind: event, status: recorded}
   - {id: EVT-0006, path: ledgers/events/EVT-0006.yaml, kind: event, status: recorded}
+  - {id: EVT-0007, path: ledgers/events/EVT-0007.yaml, kind: event, status: recorded}
+  - {id: EVT-0008, path: ledgers/events/EVT-0008.yaml, kind: event, status: recorded}
+  - {id: EVT-0009, path: ledgers/events/EVT-0009.yaml, kind: event, status: recorded}
   - {id: AUD-0001-PROMPT, path: reports/audits/AUD-0001-LOADER-FAILURE/prompt, kind: audit-prompt, status: recorded}
   - {id: AUD-0001-REPORT-DEEPSEEK-1, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-1.md, kind: audit-report, status: recorded}
   - {id: AUD-0001-REPORT-DEEPSEEK-2, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/DEEPSEEK-2.md, kind: audit-report, status: recorded}
@@ -70,10 +73,16 @@ entries:
   - {id: AUD-0001-REPORT-LUMO, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/LUMO.md, kind: audit-report, status: recorded}
   - {id: AUD-0001-REPORT-PERPLEXITY-COMPUTER, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/PERPLEXITY-COMPUTER.md, kind: audit-report, status: recorded}
   - {id: AUD-0001-REPORT-PERPLEXITY-TASK, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/PERPLEXITY-TASK.md, kind: audit-report, status: recorded}
+  - {id: AUD-0001-ROUND-2-DEEPSEEK-1, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-DEEPSEEK-1.md, kind: audit-report, status: recorded-verbatim}
+  - {id: AUD-0001-ROUND-2-DEEPSEEK-2, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-DEEPSEEK-2.md, kind: audit-report, status: recorded-verbatim}
+  - {id: AUD-0001-ROUND-2-DEEPSEEK-3, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-DEEPSEEK-3.md, kind: audit-report, status: recorded-verbatim}
+  - {id: AUD-0001-ROUND-2-LUMO, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-LUMO.md, kind: audit-report, status: recorded-verbatim}
+  - {id: AUD-0001-ROUND-2-PERPLEXITY, path: reports/audits/AUD-0001-LOADER-FAILURE/reports/ROUND-2-PERPLEXITY.md, kind: audit-report, status: recorded-verbatim}
   - {id: PR-12, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/12, kind: external-pull-request, status: open}
   - {id: PR-13, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/13, kind: external-pull-request, status: open}
   - {id: PR-14, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/14, kind: external-pull-request, status: open}
   - {id: PR-15, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/15, kind: external-pull-request, status: open-draft}
+  - {id: PR-19, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/pull/19, kind: external-pull-request, status: open}
   - {id: ISSUE-2, path: https://github.com/mizael-miz/1-SBKMPZK.HoloTaxon-fcf86651704d72301c52f7fc07acc0e3/issues/2, kind: external-issue, status: open}
   - {id: INBOX-PERPLEXITY, path: coordination/inbox/PERPLEXITY/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}
   - {id: INBOX-DEEPSEEK-1, path: coordination/inbox/DEEPSEEK-1/MSG-0001-AUDIT-DISPATCH.yaml, kind: inbox-pointer, status: dispatched}

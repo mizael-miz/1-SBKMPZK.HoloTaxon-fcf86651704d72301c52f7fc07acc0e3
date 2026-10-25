@@ -1,9 +1,10 @@
 hypothesis_id: HYP-0004
 title: Other environment-specific cause
-status: closed-low-residual
+status: residual-low
 claim: Obsidian version, restricted mode, Android filesystem behavior, or another runtime condition may cause the failure.
 predictions: [controlled tests vary environment while holding artifact and steps constant]
 supporting_evidence_refs: [EVD-0008, EVD-0009, EVD-0010]
 adjudication_source: AUD-0001-LOADER-FAILURE
-limitation: Low residual for this incident given the captured loader error and probe behavior; exact app/runtime metadata and a disposable-vault production-bundle test remain outstanding.
-pending: Round-2 auditor confirmation
+limitation: Residual-low as a primary explanation for this incident given the captured loader error and probe behavior; exact app/runtime metadata and a disposable-vault production-bundle test remain outstanding.
+adjudication: residual-low; positive control makes an environment-wide blocker unlikely, but app version and other environment factors were not independently isolated.
+open_action: Capture the Android Obsidian app version (Settings → About) and record it with the disposable-vault artifact test; this remains open and does not block closure of the external-loader audit ticket.
